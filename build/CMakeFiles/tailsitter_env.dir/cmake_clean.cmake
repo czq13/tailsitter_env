@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/tailsitter_env.dir/tailsitter.cpp.o"
   "CMakeFiles/tailsitter_env.dir/tailsitter_env.cpp.o"
   "CMakeFiles/tailsitter_env.dir/fw/ecl_controller.cpp.o"
   "CMakeFiles/tailsitter_env.dir/fw/ecl_pitch_controller.cpp.o"

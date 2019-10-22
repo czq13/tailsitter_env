@@ -285,6 +285,33 @@ fw/mathlib/mathlib.cpp.s:
 	$(MAKE) -f CMakeFiles/tailsitter_env.dir/build.make CMakeFiles/tailsitter_env.dir/fw/mathlib/mathlib.cpp.s
 .PHONY : fw/mathlib/mathlib.cpp.s
 
+tailsitter.o: tailsitter.cpp.o
+
+.PHONY : tailsitter.o
+
+# target to build an object file
+tailsitter.cpp.o:
+	$(MAKE) -f CMakeFiles/tailsitter_env.dir/build.make CMakeFiles/tailsitter_env.dir/tailsitter.cpp.o
+.PHONY : tailsitter.cpp.o
+
+tailsitter.i: tailsitter.cpp.i
+
+.PHONY : tailsitter.i
+
+# target to preprocess a source file
+tailsitter.cpp.i:
+	$(MAKE) -f CMakeFiles/tailsitter_env.dir/build.make CMakeFiles/tailsitter_env.dir/tailsitter.cpp.i
+.PHONY : tailsitter.cpp.i
+
+tailsitter.s: tailsitter.cpp.s
+
+.PHONY : tailsitter.s
+
+# target to generate assembly for a file
+tailsitter.cpp.s:
+	$(MAKE) -f CMakeFiles/tailsitter_env.dir/build.make CMakeFiles/tailsitter_env.dir/tailsitter.cpp.s
+.PHONY : tailsitter.cpp.s
+
 tailsitter_env.o: tailsitter_env.cpp.o
 
 .PHONY : tailsitter_env.o
@@ -339,6 +366,9 @@ help:
 	@echo "... fw/mathlib/mathlib.o"
 	@echo "... fw/mathlib/mathlib.i"
 	@echo "... fw/mathlib/mathlib.s"
+	@echo "... tailsitter.o"
+	@echo "... tailsitter.i"
+	@echo "... tailsitter.s"
 	@echo "... tailsitter_env.o"
 	@echo "... tailsitter_env.i"
 	@echo "... tailsitter_env.s"

@@ -57,9 +57,33 @@ include CMakeFiles/tailsitter_env.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/tailsitter_env.dir/flags.make
 
+CMakeFiles/tailsitter_env.dir/tailsitter.cpp.o: CMakeFiles/tailsitter_env.dir/flags.make
+CMakeFiles/tailsitter_env.dir/tailsitter.cpp.o: ../tailsitter.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/czq/chWorkspace/tailsitter_env/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/tailsitter_env.dir/tailsitter.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tailsitter_env.dir/tailsitter.cpp.o -c /home/czq/chWorkspace/tailsitter_env/tailsitter.cpp
+
+CMakeFiles/tailsitter_env.dir/tailsitter.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/tailsitter_env.dir/tailsitter.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/czq/chWorkspace/tailsitter_env/tailsitter.cpp > CMakeFiles/tailsitter_env.dir/tailsitter.cpp.i
+
+CMakeFiles/tailsitter_env.dir/tailsitter.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/tailsitter_env.dir/tailsitter.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/czq/chWorkspace/tailsitter_env/tailsitter.cpp -o CMakeFiles/tailsitter_env.dir/tailsitter.cpp.s
+
+CMakeFiles/tailsitter_env.dir/tailsitter.cpp.o.requires:
+
+.PHONY : CMakeFiles/tailsitter_env.dir/tailsitter.cpp.o.requires
+
+CMakeFiles/tailsitter_env.dir/tailsitter.cpp.o.provides: CMakeFiles/tailsitter_env.dir/tailsitter.cpp.o.requires
+	$(MAKE) -f CMakeFiles/tailsitter_env.dir/build.make CMakeFiles/tailsitter_env.dir/tailsitter.cpp.o.provides.build
+.PHONY : CMakeFiles/tailsitter_env.dir/tailsitter.cpp.o.provides
+
+CMakeFiles/tailsitter_env.dir/tailsitter.cpp.o.provides.build: CMakeFiles/tailsitter_env.dir/tailsitter.cpp.o
+
+
 CMakeFiles/tailsitter_env.dir/tailsitter_env.cpp.o: CMakeFiles/tailsitter_env.dir/flags.make
 CMakeFiles/tailsitter_env.dir/tailsitter_env.cpp.o: ../tailsitter_env.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/czq/chWorkspace/tailsitter_env/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/tailsitter_env.dir/tailsitter_env.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/czq/chWorkspace/tailsitter_env/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/tailsitter_env.dir/tailsitter_env.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tailsitter_env.dir/tailsitter_env.cpp.o -c /home/czq/chWorkspace/tailsitter_env/tailsitter_env.cpp
 
 CMakeFiles/tailsitter_env.dir/tailsitter_env.cpp.i: cmake_force
@@ -83,7 +107,7 @@ CMakeFiles/tailsitter_env.dir/tailsitter_env.cpp.o.provides.build: CMakeFiles/ta
 
 CMakeFiles/tailsitter_env.dir/fw/ecl_controller.cpp.o: CMakeFiles/tailsitter_env.dir/flags.make
 CMakeFiles/tailsitter_env.dir/fw/ecl_controller.cpp.o: ../fw/ecl_controller.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/czq/chWorkspace/tailsitter_env/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/tailsitter_env.dir/fw/ecl_controller.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/czq/chWorkspace/tailsitter_env/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/tailsitter_env.dir/fw/ecl_controller.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tailsitter_env.dir/fw/ecl_controller.cpp.o -c /home/czq/chWorkspace/tailsitter_env/fw/ecl_controller.cpp
 
 CMakeFiles/tailsitter_env.dir/fw/ecl_controller.cpp.i: cmake_force
@@ -107,7 +131,7 @@ CMakeFiles/tailsitter_env.dir/fw/ecl_controller.cpp.o.provides.build: CMakeFiles
 
 CMakeFiles/tailsitter_env.dir/fw/ecl_pitch_controller.cpp.o: CMakeFiles/tailsitter_env.dir/flags.make
 CMakeFiles/tailsitter_env.dir/fw/ecl_pitch_controller.cpp.o: ../fw/ecl_pitch_controller.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/czq/chWorkspace/tailsitter_env/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/tailsitter_env.dir/fw/ecl_pitch_controller.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/czq/chWorkspace/tailsitter_env/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/tailsitter_env.dir/fw/ecl_pitch_controller.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tailsitter_env.dir/fw/ecl_pitch_controller.cpp.o -c /home/czq/chWorkspace/tailsitter_env/fw/ecl_pitch_controller.cpp
 
 CMakeFiles/tailsitter_env.dir/fw/ecl_pitch_controller.cpp.i: cmake_force
@@ -131,7 +155,7 @@ CMakeFiles/tailsitter_env.dir/fw/ecl_pitch_controller.cpp.o.provides.build: CMak
 
 CMakeFiles/tailsitter_env.dir/fw/ecl_roll_controller.cpp.o: CMakeFiles/tailsitter_env.dir/flags.make
 CMakeFiles/tailsitter_env.dir/fw/ecl_roll_controller.cpp.o: ../fw/ecl_roll_controller.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/czq/chWorkspace/tailsitter_env/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/tailsitter_env.dir/fw/ecl_roll_controller.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/czq/chWorkspace/tailsitter_env/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/tailsitter_env.dir/fw/ecl_roll_controller.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tailsitter_env.dir/fw/ecl_roll_controller.cpp.o -c /home/czq/chWorkspace/tailsitter_env/fw/ecl_roll_controller.cpp
 
 CMakeFiles/tailsitter_env.dir/fw/ecl_roll_controller.cpp.i: cmake_force
@@ -155,7 +179,7 @@ CMakeFiles/tailsitter_env.dir/fw/ecl_roll_controller.cpp.o.provides.build: CMake
 
 CMakeFiles/tailsitter_env.dir/fw/ecl_wheel_controller.cpp.o: CMakeFiles/tailsitter_env.dir/flags.make
 CMakeFiles/tailsitter_env.dir/fw/ecl_wheel_controller.cpp.o: ../fw/ecl_wheel_controller.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/czq/chWorkspace/tailsitter_env/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/tailsitter_env.dir/fw/ecl_wheel_controller.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/czq/chWorkspace/tailsitter_env/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/tailsitter_env.dir/fw/ecl_wheel_controller.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tailsitter_env.dir/fw/ecl_wheel_controller.cpp.o -c /home/czq/chWorkspace/tailsitter_env/fw/ecl_wheel_controller.cpp
 
 CMakeFiles/tailsitter_env.dir/fw/ecl_wheel_controller.cpp.i: cmake_force
@@ -179,7 +203,7 @@ CMakeFiles/tailsitter_env.dir/fw/ecl_wheel_controller.cpp.o.provides.build: CMak
 
 CMakeFiles/tailsitter_env.dir/fw/ecl_yaw_controller.cpp.o: CMakeFiles/tailsitter_env.dir/flags.make
 CMakeFiles/tailsitter_env.dir/fw/ecl_yaw_controller.cpp.o: ../fw/ecl_yaw_controller.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/czq/chWorkspace/tailsitter_env/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/tailsitter_env.dir/fw/ecl_yaw_controller.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/czq/chWorkspace/tailsitter_env/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/tailsitter_env.dir/fw/ecl_yaw_controller.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tailsitter_env.dir/fw/ecl_yaw_controller.cpp.o -c /home/czq/chWorkspace/tailsitter_env/fw/ecl_yaw_controller.cpp
 
 CMakeFiles/tailsitter_env.dir/fw/ecl_yaw_controller.cpp.i: cmake_force
@@ -203,7 +227,7 @@ CMakeFiles/tailsitter_env.dir/fw/ecl_yaw_controller.cpp.o.provides.build: CMakeF
 
 CMakeFiles/tailsitter_env.dir/fw/mathlib/mathlib.cpp.o: CMakeFiles/tailsitter_env.dir/flags.make
 CMakeFiles/tailsitter_env.dir/fw/mathlib/mathlib.cpp.o: ../fw/mathlib/mathlib.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/czq/chWorkspace/tailsitter_env/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/tailsitter_env.dir/fw/mathlib/mathlib.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/czq/chWorkspace/tailsitter_env/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/tailsitter_env.dir/fw/mathlib/mathlib.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tailsitter_env.dir/fw/mathlib/mathlib.cpp.o -c /home/czq/chWorkspace/tailsitter_env/fw/mathlib/mathlib.cpp
 
 CMakeFiles/tailsitter_env.dir/fw/mathlib/mathlib.cpp.i: cmake_force
@@ -227,6 +251,7 @@ CMakeFiles/tailsitter_env.dir/fw/mathlib/mathlib.cpp.o.provides.build: CMakeFile
 
 # Object files for target tailsitter_env
 tailsitter_env_OBJECTS = \
+"CMakeFiles/tailsitter_env.dir/tailsitter.cpp.o" \
 "CMakeFiles/tailsitter_env.dir/tailsitter_env.cpp.o" \
 "CMakeFiles/tailsitter_env.dir/fw/ecl_controller.cpp.o" \
 "CMakeFiles/tailsitter_env.dir/fw/ecl_pitch_controller.cpp.o" \
@@ -238,6 +263,7 @@ tailsitter_env_OBJECTS = \
 # External object files for target tailsitter_env
 tailsitter_env_EXTERNAL_OBJECTS =
 
+tailsitter_env: CMakeFiles/tailsitter_env.dir/tailsitter.cpp.o
 tailsitter_env: CMakeFiles/tailsitter_env.dir/tailsitter_env.cpp.o
 tailsitter_env: CMakeFiles/tailsitter_env.dir/fw/ecl_controller.cpp.o
 tailsitter_env: CMakeFiles/tailsitter_env.dir/fw/ecl_pitch_controller.cpp.o
@@ -246,8 +272,129 @@ tailsitter_env: CMakeFiles/tailsitter_env.dir/fw/ecl_wheel_controller.cpp.o
 tailsitter_env: CMakeFiles/tailsitter_env.dir/fw/ecl_yaw_controller.cpp.o
 tailsitter_env: CMakeFiles/tailsitter_env.dir/fw/mathlib/mathlib.cpp.o
 tailsitter_env: CMakeFiles/tailsitter_env.dir/build.make
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libSimTKsimbody.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libSimTKmath.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libSimTKcommon.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libblas.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/liblapack.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libblas.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libgazebo.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libgazebo_client.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libgazebo_gui.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libgazebo_sensors.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libgazebo_rendering.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libgazebo_physics.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libgazebo_ode.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libgazebo_transport.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libgazebo_msgs.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libgazebo_util.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libgazebo_common.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libgazebo_gimpact.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libgazebo_opcode.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libgazebo_opende_ou.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libboost_thread.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libboost_signals.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libboost_system.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libboost_program_options.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libboost_regex.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libboost_iostreams.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libboost_date_time.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libboost_chrono.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libboost_atomic.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libpthread.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libprotobuf.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libsdformat.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libOgreMain.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libboost_thread.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libboost_date_time.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libboost_system.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libboost_atomic.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libboost_chrono.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libpthread.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libOgreTerrain.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libOgrePaging.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libignition-transport4.so.4.0.0
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libignition-msgs1.so.1.0.0
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libignition-common1.so.1.0.1
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libignition-fuel_tools1.so.1.0.0
+tailsitter_env: /usr/lib/x86_64-linux-gnu/liblapack.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libgazebo.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libgazebo_client.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libgazebo_gui.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libgazebo_sensors.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libgazebo_rendering.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libgazebo_physics.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libgazebo_ode.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libgazebo_transport.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libgazebo_msgs.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libgazebo_util.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libgazebo_common.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libgazebo_gimpact.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libgazebo_opcode.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libgazebo_opende_ou.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libboost_thread.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libboost_signals.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libboost_system.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libboost_program_options.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libboost_regex.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libboost_iostreams.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libboost_date_time.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libboost_chrono.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libboost_atomic.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libpthread.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libprotobuf.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libsdformat.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libOgreMain.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libOgreTerrain.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libOgrePaging.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libgazebo.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libgazebo_client.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libgazebo_gui.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libgazebo_sensors.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libgazebo_rendering.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libgazebo_physics.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libgazebo_ode.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libgazebo_transport.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libgazebo_msgs.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libgazebo_util.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libgazebo_common.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libgazebo_gimpact.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libgazebo_opcode.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libgazebo_opende_ou.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libboost_thread.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libboost_signals.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libboost_system.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libboost_program_options.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libboost_regex.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libboost_iostreams.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libboost_date_time.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libboost_chrono.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libboost_atomic.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libpthread.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libprotobuf.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libsdformat.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libOgreMain.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libOgreTerrain.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libOgrePaging.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libprotobuf.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libignition-math4.so.4.0.0
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libuuid.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libuuid.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libswscale.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libswscale.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libavdevice.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libavdevice.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libavformat.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libavformat.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libavcodec.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libavcodec.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libavutil.so
+tailsitter_env: /usr/lib/x86_64-linux-gnu/libavutil.so
 tailsitter_env: CMakeFiles/tailsitter_env.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/czq/chWorkspace/tailsitter_env/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable tailsitter_env"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/czq/chWorkspace/tailsitter_env/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable tailsitter_env"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/tailsitter_env.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -255,6 +402,7 @@ CMakeFiles/tailsitter_env.dir/build: tailsitter_env
 
 .PHONY : CMakeFiles/tailsitter_env.dir/build
 
+CMakeFiles/tailsitter_env.dir/requires: CMakeFiles/tailsitter_env.dir/tailsitter.cpp.o.requires
 CMakeFiles/tailsitter_env.dir/requires: CMakeFiles/tailsitter_env.dir/tailsitter_env.cpp.o.requires
 CMakeFiles/tailsitter_env.dir/requires: CMakeFiles/tailsitter_env.dir/fw/ecl_controller.cpp.o.requires
 CMakeFiles/tailsitter_env.dir/requires: CMakeFiles/tailsitter_env.dir/fw/ecl_pitch_controller.cpp.o.requires
