@@ -23,7 +23,7 @@ public:
 	matrix::Vector3f _att_control;			/**< attitude control vector */
 
 	void control_attitude(float dt);
-	Vector3f pid_attenuations(float tpa_breakpoint, float tpa_rate);
+	matrix::Vector3f pid_attenuations(float tpa_breakpoint, float tpa_rate);
 	void control_attitude_rates(float dt);
 
 	matrix::Vector3f _attitude_p;		/**< P gain for attitude control */

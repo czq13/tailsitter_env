@@ -3,26 +3,53 @@
 
 CMakeFiles/tailsitter_env.dir/fw/ecl_controller.cpp.o
  .././fw/ecl.h
- .././fw/mathlib/mathlib.h
+ .././mathlib/math/Functions.hpp
+ .././mathlib/math/Limits.hpp
+ .././mathlib/math/matrix_alg.h
+ .././mathlib/mathlib.h
  /home/czq/chWorkspace/tailsitter_env/fw/ecl_controller.cpp
  /home/czq/chWorkspace/tailsitter_env/fw/ecl_controller.h
+ /home/czq/firmware/src/platforms/px4_defines.h
+ /home/czq/firmware/src/platforms/px4_log.h
+ /usr/include/x86_64-linux-gnu/bits/long-double.h
+ /usr/include/x86_64-linux-gnu/bits/wordsize.h
+ /usr/include/x86_64-linux-gnu/sys/cdefs.h
 CMakeFiles/tailsitter_env.dir/fw/ecl_pitch_controller.cpp.o
  .././fw/ecl.h
- .././fw/mathlib/mathlib.h
+ .././mathlib/math/Functions.hpp
+ .././mathlib/math/Limits.hpp
+ .././mathlib/math/matrix_alg.h
+ .././mathlib/mathlib.h
  /home/czq/chWorkspace/build_env/lib/ecl/geo/geo.h
  /home/czq/chWorkspace/tailsitter_env/fw/ecl_controller.h
  /home/czq/chWorkspace/tailsitter_env/fw/ecl_pitch_controller.cpp
  /home/czq/chWorkspace/tailsitter_env/fw/ecl_pitch_controller.h
+ /home/czq/firmware/src/platforms/px4_defines.h
+ /home/czq/firmware/src/platforms/px4_log.h
+ /usr/include/x86_64-linux-gnu/bits/long-double.h
+ /usr/include/x86_64-linux-gnu/bits/wordsize.h
+ /usr/include/x86_64-linux-gnu/sys/cdefs.h
 CMakeFiles/tailsitter_env.dir/fw/ecl_roll_controller.cpp.o
  .././fw/ecl.h
- .././fw/mathlib/mathlib.h
+ .././mathlib/math/Functions.hpp
+ .././mathlib/math/Limits.hpp
+ .././mathlib/math/matrix_alg.h
+ .././mathlib/mathlib.h
  /home/czq/chWorkspace/build_env/lib/ecl/geo/geo.h
  /home/czq/chWorkspace/tailsitter_env/fw/ecl_controller.h
  /home/czq/chWorkspace/tailsitter_env/fw/ecl_roll_controller.cpp
  /home/czq/chWorkspace/tailsitter_env/fw/ecl_roll_controller.h
+ /home/czq/firmware/src/platforms/px4_defines.h
+ /home/czq/firmware/src/platforms/px4_log.h
+ /usr/include/x86_64-linux-gnu/bits/long-double.h
+ /usr/include/x86_64-linux-gnu/bits/wordsize.h
+ /usr/include/x86_64-linux-gnu/sys/cdefs.h
 CMakeFiles/tailsitter_env.dir/fw/ecl_wheel_controller.cpp.o
  .././fw/ecl.h
- .././fw/mathlib/mathlib.h
+ .././mathlib/math/Functions.hpp
+ .././mathlib/math/Limits.hpp
+ .././mathlib/math/matrix_alg.h
+ .././mathlib/mathlib.h
  .././matrix/matrix/AxisAngle.hpp
  .././matrix/matrix/Dcm.hpp
  .././matrix/matrix/Euler.hpp
@@ -40,20 +67,88 @@ CMakeFiles/tailsitter_env.dir/fw/ecl_wheel_controller.cpp.o
  /home/czq/chWorkspace/tailsitter_env/fw/ecl_controller.h
  /home/czq/chWorkspace/tailsitter_env/fw/ecl_wheel_controller.cpp
  /home/czq/chWorkspace/tailsitter_env/fw/ecl_wheel_controller.h
+ /home/czq/firmware/src/platforms/px4_defines.h
+ /home/czq/firmware/src/platforms/px4_log.h
+ /usr/include/x86_64-linux-gnu/bits/long-double.h
+ /usr/include/x86_64-linux-gnu/bits/wordsize.h
+ /usr/include/x86_64-linux-gnu/sys/cdefs.h
 CMakeFiles/tailsitter_env.dir/fw/ecl_yaw_controller.cpp.o
  .././fw/ecl.h
- .././fw/mathlib/mathlib.h
+ .././mathlib/math/Functions.hpp
+ .././mathlib/math/Limits.hpp
+ .././mathlib/math/matrix_alg.h
+ .././mathlib/mathlib.h
  /home/czq/chWorkspace/build_env/lib/ecl/geo/geo.h
  /home/czq/chWorkspace/tailsitter_env/fw/ecl_controller.h
  /home/czq/chWorkspace/tailsitter_env/fw/ecl_yaw_controller.cpp
  /home/czq/chWorkspace/tailsitter_env/fw/ecl_yaw_controller.h
-CMakeFiles/tailsitter_env.dir/fw/mathlib/mathlib.cpp.o
- .././fw/mathlib/mathlib.h
- /home/czq/chWorkspace/tailsitter_env/fw/mathlib/mathlib.cpp
- /home/czq/chWorkspace/tailsitter_env/fw/mathlib/mathlib.h
+ /home/czq/firmware/src/platforms/px4_defines.h
+ /home/czq/firmware/src/platforms/px4_log.h
+ /usr/include/x86_64-linux-gnu/bits/long-double.h
+ /usr/include/x86_64-linux-gnu/bits/wordsize.h
+ /usr/include/x86_64-linux-gnu/sys/cdefs.h
+CMakeFiles/tailsitter_env.dir/mathlib/math/filter/LowPassFilter2p.cpp.o
+ /home/czq/chWorkspace/tailsitter_env/mathlib/math/filter/LowPassFilter2p.cpp
+ /home/czq/chWorkspace/tailsitter_env/mathlib/math/filter/LowPassFilter2p.hpp
+ /home/czq/firmware/src/platforms/px4_defines.h
+ /home/czq/firmware/src/platforms/px4_log.h
+ /usr/include/x86_64-linux-gnu/bits/long-double.h
+ /usr/include/x86_64-linux-gnu/bits/wordsize.h
+ /usr/include/x86_64-linux-gnu/sys/cdefs.h
+CMakeFiles/tailsitter_env.dir/mathlib/math/matrix_alg.cpp.o
+ /home/czq/chWorkspace/tailsitter_env/mathlib/math/matrix_alg.cpp
+ /home/czq/chWorkspace/tailsitter_env/mathlib/math/matrix_alg.h
+ /home/czq/firmware/src/platforms/px4_defines.h
+ /home/czq/firmware/src/platforms/px4_log.h
+ /usr/include/x86_64-linux-gnu/bits/long-double.h
+ /usr/include/x86_64-linux-gnu/bits/wordsize.h
+ /usr/include/x86_64-linux-gnu/sys/cdefs.h
+CMakeFiles/tailsitter_env.dir/mc/mcattctrl.cpp.o
+ .././Chconst.h
+ .././MC_CONST.h
+ .././mathlib/math/filter/LowPassFilter2p.hpp
+ .././matrix/matrix/AxisAngle.hpp
+ .././matrix/matrix/Dcm.hpp
+ .././matrix/matrix/Euler.hpp
+ .././matrix/matrix/Matrix.hpp
+ .././matrix/matrix/Quaternion.hpp
+ .././matrix/matrix/Scalar.hpp
+ .././matrix/matrix/SquareMatrix.hpp
+ .././matrix/matrix/Vector.hpp
+ .././matrix/matrix/Vector2.hpp
+ .././matrix/matrix/Vector3.hpp
+ .././matrix/matrix/helper_functions.hpp
+ .././matrix/matrix/math.hpp
+ .././matrix/matrix/stdlib_imports.hpp
+ /home/czq/chWorkspace/tailsitter_env/mc/mcattctrl.cpp
+ /home/czq/chWorkspace/tailsitter_env/mc/mcattctrl.h
+ /home/czq/firmware/src/platforms/px4_defines.h
+ /home/czq/firmware/src/platforms/px4_log.h
+ /usr/include/x86_64-linux-gnu/bits/long-double.h
+ /usr/include/x86_64-linux-gnu/bits/wordsize.h
+ /usr/include/x86_64-linux-gnu/sys/cdefs.h
 CMakeFiles/tailsitter_env.dir/tailsitter.cpp.o
+ .././mathlib/math/filter/LowPassFilter2p.hpp
+ .././matrix/matrix/AxisAngle.hpp
+ .././matrix/matrix/Dcm.hpp
+ .././matrix/matrix/Euler.hpp
+ .././matrix/matrix/Matrix.hpp
+ .././matrix/matrix/Quaternion.hpp
+ .././matrix/matrix/Scalar.hpp
+ .././matrix/matrix/SquareMatrix.hpp
+ .././matrix/matrix/Vector.hpp
+ .././matrix/matrix/Vector2.hpp
+ .././matrix/matrix/Vector3.hpp
+ .././matrix/matrix/helper_functions.hpp
+ .././matrix/matrix/math.hpp
+ .././matrix/matrix/stdlib_imports.hpp
+ .././mc/mcattctrl.h
+ /home/czq/chWorkspace/tailsitter_env/Chconst.h
+ /home/czq/chWorkspace/tailsitter_env/MC_CONST.h
  /home/czq/chWorkspace/tailsitter_env/tailsitter.cpp
  /home/czq/chWorkspace/tailsitter_env/tailsitter.h
+ /home/czq/firmware/src/platforms/px4_defines.h
+ /home/czq/firmware/src/platforms/px4_log.h
  /usr/include/gazebo-9/gazebo/Master.hh
  /usr/include/gazebo-9/gazebo/Server.hh
  /usr/include/gazebo-9/gazebo/common/Animation.hh
@@ -536,6 +631,7 @@ CMakeFiles/tailsitter_env.dir/tailsitter.cpp.o
  /usr/include/sdformat-6.0/sdf/sdf.hh
  /usr/include/sdformat-6.0/sdf/sdf_config.h
  /usr/include/sdformat-6.0/sdf/system_util.hh
+ /usr/include/x86_64-linux-gnu/bits/long-double.h
  /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h
  /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h
  /usr/include/x86_64-linux-gnu/bits/select.h
@@ -584,13 +680,33 @@ CMakeFiles/tailsitter_env.dir/tailsitter.cpp.o
  /usr/include/x86_64-linux-gnu/libavutil/samplefmt.h
  /usr/include/x86_64-linux-gnu/libavutil/version.h
  /usr/include/x86_64-linux-gnu/libswscale/swscale.h
+ /usr/include/x86_64-linux-gnu/sys/cdefs.h
  /usr/include/x86_64-linux-gnu/sys/select.h
  /usr/include/x86_64-linux-gnu/sys/stat.h
  /usr/include/x86_64-linux-gnu/sys/sysmacros.h
  /usr/include/x86_64-linux-gnu/sys/types.h
 CMakeFiles/tailsitter_env.dir/tailsitter_env.cpp.o
+ .././mathlib/math/filter/LowPassFilter2p.hpp
+ .././matrix/matrix/AxisAngle.hpp
+ .././matrix/matrix/Dcm.hpp
+ .././matrix/matrix/Euler.hpp
+ .././matrix/matrix/Matrix.hpp
+ .././matrix/matrix/Quaternion.hpp
+ .././matrix/matrix/Scalar.hpp
+ .././matrix/matrix/SquareMatrix.hpp
+ .././matrix/matrix/Vector.hpp
+ .././matrix/matrix/Vector2.hpp
+ .././matrix/matrix/Vector3.hpp
+ .././matrix/matrix/helper_functions.hpp
+ .././matrix/matrix/math.hpp
+ .././matrix/matrix/stdlib_imports.hpp
+ .././mc/mcattctrl.h
+ /home/czq/chWorkspace/tailsitter_env/Chconst.h
+ /home/czq/chWorkspace/tailsitter_env/MC_CONST.h
  /home/czq/chWorkspace/tailsitter_env/tailsitter.h
  /home/czq/chWorkspace/tailsitter_env/tailsitter_env.cpp
+ /home/czq/firmware/src/platforms/px4_defines.h
+ /home/czq/firmware/src/platforms/px4_log.h
  /usr/include/gazebo-9/gazebo/Master.hh
  /usr/include/gazebo-9/gazebo/Server.hh
  /usr/include/gazebo-9/gazebo/common/Animation.hh
@@ -1073,6 +1189,7 @@ CMakeFiles/tailsitter_env.dir/tailsitter_env.cpp.o
  /usr/include/sdformat-6.0/sdf/sdf.hh
  /usr/include/sdformat-6.0/sdf/sdf_config.h
  /usr/include/sdformat-6.0/sdf/system_util.hh
+ /usr/include/x86_64-linux-gnu/bits/long-double.h
  /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h
  /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h
  /usr/include/x86_64-linux-gnu/bits/select.h
@@ -1121,6 +1238,7 @@ CMakeFiles/tailsitter_env.dir/tailsitter_env.cpp.o
  /usr/include/x86_64-linux-gnu/libavutil/samplefmt.h
  /usr/include/x86_64-linux-gnu/libavutil/version.h
  /usr/include/x86_64-linux-gnu/libswscale/swscale.h
+ /usr/include/x86_64-linux-gnu/sys/cdefs.h
  /usr/include/x86_64-linux-gnu/sys/select.h
  /usr/include/x86_64-linux-gnu/sys/stat.h
  /usr/include/x86_64-linux-gnu/sys/sysmacros.h

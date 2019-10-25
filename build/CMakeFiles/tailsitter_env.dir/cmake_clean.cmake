@@ -6,7 +6,9 @@ file(REMOVE_RECURSE
   "CMakeFiles/tailsitter_env.dir/fw/ecl_roll_controller.cpp.o"
   "CMakeFiles/tailsitter_env.dir/fw/ecl_wheel_controller.cpp.o"
   "CMakeFiles/tailsitter_env.dir/fw/ecl_yaw_controller.cpp.o"
-  "CMakeFiles/tailsitter_env.dir/fw/mathlib/mathlib.cpp.o"
+  "CMakeFiles/tailsitter_env.dir/mc/mcattctrl.cpp.o"
+  "CMakeFiles/tailsitter_env.dir/mathlib/math/matrix_alg.cpp.o"
+  "CMakeFiles/tailsitter_env.dir/mathlib/math/filter/LowPassFilter2p.cpp.o"
   "tailsitter_env.pdb"
   "tailsitter_env"
 )

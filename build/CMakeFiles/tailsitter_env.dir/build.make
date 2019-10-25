@@ -225,28 +225,76 @@ CMakeFiles/tailsitter_env.dir/fw/ecl_yaw_controller.cpp.o.provides: CMakeFiles/t
 CMakeFiles/tailsitter_env.dir/fw/ecl_yaw_controller.cpp.o.provides.build: CMakeFiles/tailsitter_env.dir/fw/ecl_yaw_controller.cpp.o
 
 
-CMakeFiles/tailsitter_env.dir/fw/mathlib/mathlib.cpp.o: CMakeFiles/tailsitter_env.dir/flags.make
-CMakeFiles/tailsitter_env.dir/fw/mathlib/mathlib.cpp.o: ../fw/mathlib/mathlib.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/czq/chWorkspace/tailsitter_env/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/tailsitter_env.dir/fw/mathlib/mathlib.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tailsitter_env.dir/fw/mathlib/mathlib.cpp.o -c /home/czq/chWorkspace/tailsitter_env/fw/mathlib/mathlib.cpp
+CMakeFiles/tailsitter_env.dir/mc/mcattctrl.cpp.o: CMakeFiles/tailsitter_env.dir/flags.make
+CMakeFiles/tailsitter_env.dir/mc/mcattctrl.cpp.o: ../mc/mcattctrl.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/czq/chWorkspace/tailsitter_env/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/tailsitter_env.dir/mc/mcattctrl.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tailsitter_env.dir/mc/mcattctrl.cpp.o -c /home/czq/chWorkspace/tailsitter_env/mc/mcattctrl.cpp
 
-CMakeFiles/tailsitter_env.dir/fw/mathlib/mathlib.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/tailsitter_env.dir/fw/mathlib/mathlib.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/czq/chWorkspace/tailsitter_env/fw/mathlib/mathlib.cpp > CMakeFiles/tailsitter_env.dir/fw/mathlib/mathlib.cpp.i
+CMakeFiles/tailsitter_env.dir/mc/mcattctrl.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/tailsitter_env.dir/mc/mcattctrl.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/czq/chWorkspace/tailsitter_env/mc/mcattctrl.cpp > CMakeFiles/tailsitter_env.dir/mc/mcattctrl.cpp.i
 
-CMakeFiles/tailsitter_env.dir/fw/mathlib/mathlib.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/tailsitter_env.dir/fw/mathlib/mathlib.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/czq/chWorkspace/tailsitter_env/fw/mathlib/mathlib.cpp -o CMakeFiles/tailsitter_env.dir/fw/mathlib/mathlib.cpp.s
+CMakeFiles/tailsitter_env.dir/mc/mcattctrl.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/tailsitter_env.dir/mc/mcattctrl.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/czq/chWorkspace/tailsitter_env/mc/mcattctrl.cpp -o CMakeFiles/tailsitter_env.dir/mc/mcattctrl.cpp.s
 
-CMakeFiles/tailsitter_env.dir/fw/mathlib/mathlib.cpp.o.requires:
+CMakeFiles/tailsitter_env.dir/mc/mcattctrl.cpp.o.requires:
 
-.PHONY : CMakeFiles/tailsitter_env.dir/fw/mathlib/mathlib.cpp.o.requires
+.PHONY : CMakeFiles/tailsitter_env.dir/mc/mcattctrl.cpp.o.requires
 
-CMakeFiles/tailsitter_env.dir/fw/mathlib/mathlib.cpp.o.provides: CMakeFiles/tailsitter_env.dir/fw/mathlib/mathlib.cpp.o.requires
-	$(MAKE) -f CMakeFiles/tailsitter_env.dir/build.make CMakeFiles/tailsitter_env.dir/fw/mathlib/mathlib.cpp.o.provides.build
-.PHONY : CMakeFiles/tailsitter_env.dir/fw/mathlib/mathlib.cpp.o.provides
+CMakeFiles/tailsitter_env.dir/mc/mcattctrl.cpp.o.provides: CMakeFiles/tailsitter_env.dir/mc/mcattctrl.cpp.o.requires
+	$(MAKE) -f CMakeFiles/tailsitter_env.dir/build.make CMakeFiles/tailsitter_env.dir/mc/mcattctrl.cpp.o.provides.build
+.PHONY : CMakeFiles/tailsitter_env.dir/mc/mcattctrl.cpp.o.provides
 
-CMakeFiles/tailsitter_env.dir/fw/mathlib/mathlib.cpp.o.provides.build: CMakeFiles/tailsitter_env.dir/fw/mathlib/mathlib.cpp.o
+CMakeFiles/tailsitter_env.dir/mc/mcattctrl.cpp.o.provides.build: CMakeFiles/tailsitter_env.dir/mc/mcattctrl.cpp.o
+
+
+CMakeFiles/tailsitter_env.dir/mathlib/math/matrix_alg.cpp.o: CMakeFiles/tailsitter_env.dir/flags.make
+CMakeFiles/tailsitter_env.dir/mathlib/math/matrix_alg.cpp.o: ../mathlib/math/matrix_alg.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/czq/chWorkspace/tailsitter_env/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/tailsitter_env.dir/mathlib/math/matrix_alg.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tailsitter_env.dir/mathlib/math/matrix_alg.cpp.o -c /home/czq/chWorkspace/tailsitter_env/mathlib/math/matrix_alg.cpp
+
+CMakeFiles/tailsitter_env.dir/mathlib/math/matrix_alg.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/tailsitter_env.dir/mathlib/math/matrix_alg.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/czq/chWorkspace/tailsitter_env/mathlib/math/matrix_alg.cpp > CMakeFiles/tailsitter_env.dir/mathlib/math/matrix_alg.cpp.i
+
+CMakeFiles/tailsitter_env.dir/mathlib/math/matrix_alg.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/tailsitter_env.dir/mathlib/math/matrix_alg.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/czq/chWorkspace/tailsitter_env/mathlib/math/matrix_alg.cpp -o CMakeFiles/tailsitter_env.dir/mathlib/math/matrix_alg.cpp.s
+
+CMakeFiles/tailsitter_env.dir/mathlib/math/matrix_alg.cpp.o.requires:
+
+.PHONY : CMakeFiles/tailsitter_env.dir/mathlib/math/matrix_alg.cpp.o.requires
+
+CMakeFiles/tailsitter_env.dir/mathlib/math/matrix_alg.cpp.o.provides: CMakeFiles/tailsitter_env.dir/mathlib/math/matrix_alg.cpp.o.requires
+	$(MAKE) -f CMakeFiles/tailsitter_env.dir/build.make CMakeFiles/tailsitter_env.dir/mathlib/math/matrix_alg.cpp.o.provides.build
+.PHONY : CMakeFiles/tailsitter_env.dir/mathlib/math/matrix_alg.cpp.o.provides
+
+CMakeFiles/tailsitter_env.dir/mathlib/math/matrix_alg.cpp.o.provides.build: CMakeFiles/tailsitter_env.dir/mathlib/math/matrix_alg.cpp.o
+
+
+CMakeFiles/tailsitter_env.dir/mathlib/math/filter/LowPassFilter2p.cpp.o: CMakeFiles/tailsitter_env.dir/flags.make
+CMakeFiles/tailsitter_env.dir/mathlib/math/filter/LowPassFilter2p.cpp.o: ../mathlib/math/filter/LowPassFilter2p.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/czq/chWorkspace/tailsitter_env/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/tailsitter_env.dir/mathlib/math/filter/LowPassFilter2p.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tailsitter_env.dir/mathlib/math/filter/LowPassFilter2p.cpp.o -c /home/czq/chWorkspace/tailsitter_env/mathlib/math/filter/LowPassFilter2p.cpp
+
+CMakeFiles/tailsitter_env.dir/mathlib/math/filter/LowPassFilter2p.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/tailsitter_env.dir/mathlib/math/filter/LowPassFilter2p.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/czq/chWorkspace/tailsitter_env/mathlib/math/filter/LowPassFilter2p.cpp > CMakeFiles/tailsitter_env.dir/mathlib/math/filter/LowPassFilter2p.cpp.i
+
+CMakeFiles/tailsitter_env.dir/mathlib/math/filter/LowPassFilter2p.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/tailsitter_env.dir/mathlib/math/filter/LowPassFilter2p.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/czq/chWorkspace/tailsitter_env/mathlib/math/filter/LowPassFilter2p.cpp -o CMakeFiles/tailsitter_env.dir/mathlib/math/filter/LowPassFilter2p.cpp.s
+
+CMakeFiles/tailsitter_env.dir/mathlib/math/filter/LowPassFilter2p.cpp.o.requires:
+
+.PHONY : CMakeFiles/tailsitter_env.dir/mathlib/math/filter/LowPassFilter2p.cpp.o.requires
+
+CMakeFiles/tailsitter_env.dir/mathlib/math/filter/LowPassFilter2p.cpp.o.provides: CMakeFiles/tailsitter_env.dir/mathlib/math/filter/LowPassFilter2p.cpp.o.requires
+	$(MAKE) -f CMakeFiles/tailsitter_env.dir/build.make CMakeFiles/tailsitter_env.dir/mathlib/math/filter/LowPassFilter2p.cpp.o.provides.build
+.PHONY : CMakeFiles/tailsitter_env.dir/mathlib/math/filter/LowPassFilter2p.cpp.o.provides
+
+CMakeFiles/tailsitter_env.dir/mathlib/math/filter/LowPassFilter2p.cpp.o.provides.build: CMakeFiles/tailsitter_env.dir/mathlib/math/filter/LowPassFilter2p.cpp.o
 
 
 # Object files for target tailsitter_env
@@ -258,7 +306,9 @@ tailsitter_env_OBJECTS = \
 "CMakeFiles/tailsitter_env.dir/fw/ecl_roll_controller.cpp.o" \
 "CMakeFiles/tailsitter_env.dir/fw/ecl_wheel_controller.cpp.o" \
 "CMakeFiles/tailsitter_env.dir/fw/ecl_yaw_controller.cpp.o" \
-"CMakeFiles/tailsitter_env.dir/fw/mathlib/mathlib.cpp.o"
+"CMakeFiles/tailsitter_env.dir/mc/mcattctrl.cpp.o" \
+"CMakeFiles/tailsitter_env.dir/mathlib/math/matrix_alg.cpp.o" \
+"CMakeFiles/tailsitter_env.dir/mathlib/math/filter/LowPassFilter2p.cpp.o"
 
 # External object files for target tailsitter_env
 tailsitter_env_EXTERNAL_OBJECTS =
@@ -270,7 +320,9 @@ tailsitter_env: CMakeFiles/tailsitter_env.dir/fw/ecl_pitch_controller.cpp.o
 tailsitter_env: CMakeFiles/tailsitter_env.dir/fw/ecl_roll_controller.cpp.o
 tailsitter_env: CMakeFiles/tailsitter_env.dir/fw/ecl_wheel_controller.cpp.o
 tailsitter_env: CMakeFiles/tailsitter_env.dir/fw/ecl_yaw_controller.cpp.o
-tailsitter_env: CMakeFiles/tailsitter_env.dir/fw/mathlib/mathlib.cpp.o
+tailsitter_env: CMakeFiles/tailsitter_env.dir/mc/mcattctrl.cpp.o
+tailsitter_env: CMakeFiles/tailsitter_env.dir/mathlib/math/matrix_alg.cpp.o
+tailsitter_env: CMakeFiles/tailsitter_env.dir/mathlib/math/filter/LowPassFilter2p.cpp.o
 tailsitter_env: CMakeFiles/tailsitter_env.dir/build.make
 tailsitter_env: /usr/lib/x86_64-linux-gnu/libSimTKsimbody.so
 tailsitter_env: /usr/lib/x86_64-linux-gnu/libSimTKmath.so
@@ -394,7 +446,7 @@ tailsitter_env: /usr/lib/x86_64-linux-gnu/libavcodec.so
 tailsitter_env: /usr/lib/x86_64-linux-gnu/libavutil.so
 tailsitter_env: /usr/lib/x86_64-linux-gnu/libavutil.so
 tailsitter_env: CMakeFiles/tailsitter_env.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/czq/chWorkspace/tailsitter_env/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable tailsitter_env"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/czq/chWorkspace/tailsitter_env/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX executable tailsitter_env"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/tailsitter_env.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -409,7 +461,9 @@ CMakeFiles/tailsitter_env.dir/requires: CMakeFiles/tailsitter_env.dir/fw/ecl_pit
 CMakeFiles/tailsitter_env.dir/requires: CMakeFiles/tailsitter_env.dir/fw/ecl_roll_controller.cpp.o.requires
 CMakeFiles/tailsitter_env.dir/requires: CMakeFiles/tailsitter_env.dir/fw/ecl_wheel_controller.cpp.o.requires
 CMakeFiles/tailsitter_env.dir/requires: CMakeFiles/tailsitter_env.dir/fw/ecl_yaw_controller.cpp.o.requires
-CMakeFiles/tailsitter_env.dir/requires: CMakeFiles/tailsitter_env.dir/fw/mathlib/mathlib.cpp.o.requires
+CMakeFiles/tailsitter_env.dir/requires: CMakeFiles/tailsitter_env.dir/mc/mcattctrl.cpp.o.requires
+CMakeFiles/tailsitter_env.dir/requires: CMakeFiles/tailsitter_env.dir/mathlib/math/matrix_alg.cpp.o.requires
+CMakeFiles/tailsitter_env.dir/requires: CMakeFiles/tailsitter_env.dir/mathlib/math/filter/LowPassFilter2p.cpp.o.requires
 
 .PHONY : CMakeFiles/tailsitter_env.dir/requires
 

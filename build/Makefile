@@ -258,32 +258,86 @@ fw/ecl_yaw_controller.cpp.s:
 	$(MAKE) -f CMakeFiles/tailsitter_env.dir/build.make CMakeFiles/tailsitter_env.dir/fw/ecl_yaw_controller.cpp.s
 .PHONY : fw/ecl_yaw_controller.cpp.s
 
-fw/mathlib/mathlib.o: fw/mathlib/mathlib.cpp.o
+mathlib/math/filter/LowPassFilter2p.o: mathlib/math/filter/LowPassFilter2p.cpp.o
 
-.PHONY : fw/mathlib/mathlib.o
+.PHONY : mathlib/math/filter/LowPassFilter2p.o
 
 # target to build an object file
-fw/mathlib/mathlib.cpp.o:
-	$(MAKE) -f CMakeFiles/tailsitter_env.dir/build.make CMakeFiles/tailsitter_env.dir/fw/mathlib/mathlib.cpp.o
-.PHONY : fw/mathlib/mathlib.cpp.o
+mathlib/math/filter/LowPassFilter2p.cpp.o:
+	$(MAKE) -f CMakeFiles/tailsitter_env.dir/build.make CMakeFiles/tailsitter_env.dir/mathlib/math/filter/LowPassFilter2p.cpp.o
+.PHONY : mathlib/math/filter/LowPassFilter2p.cpp.o
 
-fw/mathlib/mathlib.i: fw/mathlib/mathlib.cpp.i
+mathlib/math/filter/LowPassFilter2p.i: mathlib/math/filter/LowPassFilter2p.cpp.i
 
-.PHONY : fw/mathlib/mathlib.i
+.PHONY : mathlib/math/filter/LowPassFilter2p.i
 
 # target to preprocess a source file
-fw/mathlib/mathlib.cpp.i:
-	$(MAKE) -f CMakeFiles/tailsitter_env.dir/build.make CMakeFiles/tailsitter_env.dir/fw/mathlib/mathlib.cpp.i
-.PHONY : fw/mathlib/mathlib.cpp.i
+mathlib/math/filter/LowPassFilter2p.cpp.i:
+	$(MAKE) -f CMakeFiles/tailsitter_env.dir/build.make CMakeFiles/tailsitter_env.dir/mathlib/math/filter/LowPassFilter2p.cpp.i
+.PHONY : mathlib/math/filter/LowPassFilter2p.cpp.i
 
-fw/mathlib/mathlib.s: fw/mathlib/mathlib.cpp.s
+mathlib/math/filter/LowPassFilter2p.s: mathlib/math/filter/LowPassFilter2p.cpp.s
 
-.PHONY : fw/mathlib/mathlib.s
+.PHONY : mathlib/math/filter/LowPassFilter2p.s
 
 # target to generate assembly for a file
-fw/mathlib/mathlib.cpp.s:
-	$(MAKE) -f CMakeFiles/tailsitter_env.dir/build.make CMakeFiles/tailsitter_env.dir/fw/mathlib/mathlib.cpp.s
-.PHONY : fw/mathlib/mathlib.cpp.s
+mathlib/math/filter/LowPassFilter2p.cpp.s:
+	$(MAKE) -f CMakeFiles/tailsitter_env.dir/build.make CMakeFiles/tailsitter_env.dir/mathlib/math/filter/LowPassFilter2p.cpp.s
+.PHONY : mathlib/math/filter/LowPassFilter2p.cpp.s
+
+mathlib/math/matrix_alg.o: mathlib/math/matrix_alg.cpp.o
+
+.PHONY : mathlib/math/matrix_alg.o
+
+# target to build an object file
+mathlib/math/matrix_alg.cpp.o:
+	$(MAKE) -f CMakeFiles/tailsitter_env.dir/build.make CMakeFiles/tailsitter_env.dir/mathlib/math/matrix_alg.cpp.o
+.PHONY : mathlib/math/matrix_alg.cpp.o
+
+mathlib/math/matrix_alg.i: mathlib/math/matrix_alg.cpp.i
+
+.PHONY : mathlib/math/matrix_alg.i
+
+# target to preprocess a source file
+mathlib/math/matrix_alg.cpp.i:
+	$(MAKE) -f CMakeFiles/tailsitter_env.dir/build.make CMakeFiles/tailsitter_env.dir/mathlib/math/matrix_alg.cpp.i
+.PHONY : mathlib/math/matrix_alg.cpp.i
+
+mathlib/math/matrix_alg.s: mathlib/math/matrix_alg.cpp.s
+
+.PHONY : mathlib/math/matrix_alg.s
+
+# target to generate assembly for a file
+mathlib/math/matrix_alg.cpp.s:
+	$(MAKE) -f CMakeFiles/tailsitter_env.dir/build.make CMakeFiles/tailsitter_env.dir/mathlib/math/matrix_alg.cpp.s
+.PHONY : mathlib/math/matrix_alg.cpp.s
+
+mc/mcattctrl.o: mc/mcattctrl.cpp.o
+
+.PHONY : mc/mcattctrl.o
+
+# target to build an object file
+mc/mcattctrl.cpp.o:
+	$(MAKE) -f CMakeFiles/tailsitter_env.dir/build.make CMakeFiles/tailsitter_env.dir/mc/mcattctrl.cpp.o
+.PHONY : mc/mcattctrl.cpp.o
+
+mc/mcattctrl.i: mc/mcattctrl.cpp.i
+
+.PHONY : mc/mcattctrl.i
+
+# target to preprocess a source file
+mc/mcattctrl.cpp.i:
+	$(MAKE) -f CMakeFiles/tailsitter_env.dir/build.make CMakeFiles/tailsitter_env.dir/mc/mcattctrl.cpp.i
+.PHONY : mc/mcattctrl.cpp.i
+
+mc/mcattctrl.s: mc/mcattctrl.cpp.s
+
+.PHONY : mc/mcattctrl.s
+
+# target to generate assembly for a file
+mc/mcattctrl.cpp.s:
+	$(MAKE) -f CMakeFiles/tailsitter_env.dir/build.make CMakeFiles/tailsitter_env.dir/mc/mcattctrl.cpp.s
+.PHONY : mc/mcattctrl.cpp.s
 
 tailsitter.o: tailsitter.cpp.o
 
@@ -363,9 +417,15 @@ help:
 	@echo "... fw/ecl_yaw_controller.o"
 	@echo "... fw/ecl_yaw_controller.i"
 	@echo "... fw/ecl_yaw_controller.s"
-	@echo "... fw/mathlib/mathlib.o"
-	@echo "... fw/mathlib/mathlib.i"
-	@echo "... fw/mathlib/mathlib.s"
+	@echo "... mathlib/math/filter/LowPassFilter2p.o"
+	@echo "... mathlib/math/filter/LowPassFilter2p.i"
+	@echo "... mathlib/math/filter/LowPassFilter2p.s"
+	@echo "... mathlib/math/matrix_alg.o"
+	@echo "... mathlib/math/matrix_alg.i"
+	@echo "... mathlib/math/matrix_alg.s"
+	@echo "... mc/mcattctrl.o"
+	@echo "... mc/mcattctrl.i"
+	@echo "... mc/mcattctrl.s"
 	@echo "... tailsitter.o"
 	@echo "... tailsitter.i"
 	@echo "... tailsitter.s"

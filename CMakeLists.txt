@@ -1,7 +1,7 @@
 cmake_minimum_required (VERSION 2.6)
 
 project (tailsitter_env)
-
+set(CMAKE_CXX_STANDARD 11)
 find_package(gazebo REQUIRED)
 
 add_definitions(-DECL_STANDALONE=1)
@@ -9,15 +9,21 @@ list(APPEND CMAKE_CXX_FLAGS "${GAZEBO_CXX_FLAGS}")
 include_directories(${GAZEBO_INCLUDE_DIRS})
 link_directories(${GAZEBO_LIBRARY_DIRS})
 
+include_directories(./)
 include_directories(./fw)
+include_directories(./mc)
 #include_directories(./fw/mathlib)
-include_direcotries(./mathlib)
+include_directories(./mathlib)
 include_directories(./matrix)
 include_directories(/home/czq/chWorkspace/build_env/lib/ecl)
+include_directories(/home/czq/firmware/src/platforms)
 
 file(GLOB FW_SRC "./fw/*.cpp")
-file(GLOB MATHLIB_SRC "./fw/mathlib/*.cpp")
+file(GLOB MC_SRC "./mc/*.cpp")
+#file(GLOB MATHLIB_SRC "./fw/mathlib/*.cpp")
 file(GLOB SRC "./*.cpp")
+list(APPEND OTHER_SRC "./mathlib/math/matrix_alg.cpp")
+list(APPEND OTHER_SRC "./mathlib/math/filter/LowPassFilter2p.cpp")
 
-add_executable(tailsitter_env ${SRC} ${FW_SRC} ${MATHLIB_SRC})
+add_executable(tailsitter_env ${SRC} ${FW_SRC} ${MC_SRC} ${OTHER_SRC})
 target_link_libraries(tailsitter_env ${GAZEBO_LIBRARIES} pthread)
