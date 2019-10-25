@@ -9,8 +9,8 @@
 #define CHCONST_H_
 
 struct vehicle_attitude_s {
-	long long timestamp;
-	long long pre_timestamp;
+	double timestamp;
+	double pre_timestamp;
 	float rollspeed;
 	float pitchspeed;
 	float yawspeed;
@@ -18,8 +18,8 @@ struct vehicle_attitude_s {
 };
 
 struct vehicle_attitude_setpoint_s {
-	long long timestamp; // required for logger
-	long long pre_timestamp;
+	double timestamp; // required for logger
+	double pre_timestamp;
 	float roll_body;
 	float pitch_body;
 	float yaw_body;
@@ -37,8 +37,8 @@ struct vehicle_attitude_setpoint_s {
 };
 
 struct vehicle_local_position_s {
-	long long timestamp; // required for logger
-	long long pre_timestamp;
+	double timestamp; // required for logger
+	double pre_timestamp;
 	float x;
 	float y;
 	float z;

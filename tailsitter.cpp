@@ -85,7 +85,7 @@ void tailsitter::update_info() {
 	_v_att.q[2] = ang.Y();
 	_v_att.q[3] = ang.Z();
 	_v_att.pre_timestamp = _v_att.timestamp;
-	_v_att.timestamp = this->world->SimTime();
+	_v_att.timestamp = (this->world->SimTime()).Double();
 
 
 	_local_pos.ax = linearaccel[0];
@@ -98,16 +98,16 @@ void tailsitter::update_info() {
 	_local_pos.y = pos[1];
 	_local_pos.z = pos[2];
 	_local_pos.pre_timestamp = _local_pos.timestamp;
-	_local_pos.timestamp = this->world->SimTime();
+	_local_pos.timestamp = (this->world->SimTime()).Double();
 	roll = ang.Roll();
 	pitch = ang.Pitch();
 	yaw = ang.Yaw();
 }
 void tailsitter::apply_ctrl() {
-	this->rotor0->SetVelocity(rotor[0] * 120);
-	this->rotor1->SetVelocity(rotor[1] * 120);
-	this->rotor2->SetVelocity(rotor[2] * 120);
-	this->rotor3->SetVelocity(rotor[3] * 120);
+	this->rotor0->SetVelocity(0,rotor[0] * 120);
+	this->rotor1->SetVelocity(0,rotor[1] * 120);
+	this->rotor2->SetVelocity(0,rotor[2] * 120);
+	this->rotor3->SetVelocity(0,rotor[3] * 120);
 	this->left_elevon->SetPosition(0,left_ele);
 	this->right_elevon->SetPosition(0,right_ele);
 }
