@@ -10,7 +10,8 @@
 
 tailsitter::tailsitter() {
 	// TODO Auto-generated constructor stub
-	std::string file_name = "/home/czq/chWorkspace/tailsitter_env/gazebo_model/tailsitter.world";
+	//std::string file_name = "/home/czq/chWorkspace/tailsitter_env/gazebo_model/tailsitter.world";
+	std::string file_name = "/home/czq/eclipse-workspace/tailsitter_env/fw/gazebo_model/tailsitter.world";
 	std::string model_name = "tailsitter";
 	try {
 		std::cerr << "loading world..." << std::endl;
@@ -41,7 +42,7 @@ tailsitter::tailsitter() {
 					std::cerr << "load joint failed!\n";
 		}
 		else std:: cerr << "load joint success\n";
-		this->step_size = 10;
+		this->step_size = 1;
 		logfile = fopen("log.txt","w");
 		mc_ctrl = new MC::mc_att_ctrl();
 		_v_att.pre_timestamp = _v_att.timestamp = 0;
@@ -59,7 +60,9 @@ void tailsitter::run_world() {
 	//run ctrl
 	update_info();
 	mc_ctrl->_v_att = _v_att;
-	double dt = _v_att.timestamp-_v_att.pre_timestamp;
+	mc_ctrl->_v_att_sp.q_d[0] = 1.0f;mc_ctrl->_v_att_sp.q_d[1] = 0.0f;mc_ctrl->_v_att_sp.q_d[2] = 0.0f;mc_ctrl->_v_att_sp.q_d[3] = 0.0f;
+	mc_ctrl->thrust_sp = 0.73;
+	double dt = math::max(_v_att.timestamp-_v_att.pre_timestamp,1.0e-6);
 	mc_ctrl->control_attitude(dt);
 	mc_ctrl->control_attitude_rates(dt);
 	mc_att_control = mc_ctrl->_att_control;
@@ -84,6 +87,7 @@ void tailsitter::update_info() {
 	_v_att.q[1] = ang.X();
 	_v_att.q[2] = ang.Y();
 	_v_att.q[3] = ang.Z();
+	printf("q[0]=%f,[1]=%f,[2]=%f,[3]=%f\n",_v_att.q[0],_v_att.q[1],_v_att.q[2],_v_att.q[3]);
 	_v_att.pre_timestamp = _v_att.timestamp;
 	_v_att.timestamp = (this->world->SimTime()).Double();
 
@@ -112,12 +116,12 @@ void tailsitter::apply_ctrl() {
 	this->right_elevon->SetPosition(0,right_ele);
 }
 void tailsitter::fill_actuator_outputs(){
-	rotor[0] = 0.753 + mc_att_control[0] + mc_att_control[1];
-	rotor[1] = 0.753 - mc_att_control[0] - mc_att_control[1];
-	rotor[2] = 0.753 + mc_att_control[0] - mc_att_control[1];
-	rotor[3] = 0.753 - mc_att_control[0] + mc_att_control[1];
-	left_ele = mc_att_control[2];
-	right_ele = -mc_att_control[2];
+	rotor[0] = 0.753 + mc_att_control._data[0][0] + mc_att_control._data[1][0];
+	rotor[1] = 0.753 - mc_att_control._data[0][0] - mc_att_control._data[1][0];
+	rotor[2] = 0.753 + mc_att_control._data[0][0] - mc_att_control._data[1][0];
+	rotor[3] = 0.753 - mc_att_control._data[0][0] + mc_att_control._data[1][0];
+	left_ele = 0;//mc_att_control._data[2][0];
+	right_ele = 0;//-mc_att_control._data[2][0];
 }
 void tailsitter::log() {
 	if (!logfile) printf("log fail!\n");

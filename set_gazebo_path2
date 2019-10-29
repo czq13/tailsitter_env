@@ -1,0 +1,3 @@
+export GAZEBO_PLUGIN_PATH=/home/czq/eclipse-workspace/tailsitter_env/fw/gazebo_model
+export GAZEBO_MODEL_PATH=/home/czq/eclipse-workspace/tailsitter_env/fw/gazebo_model
+export LD_LIBRARY_PATH=/home/czq/eclipse-workspace/tailsitter_env/fw/gazebo_model

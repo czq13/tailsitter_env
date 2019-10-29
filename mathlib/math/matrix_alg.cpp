@@ -39,7 +39,9 @@
  */
 
 #include "matrix_alg.h"
-#include <px4_defines.h>
+#include <cmath>
+#define PX4_ISFINITE(x) std::isfinite(x)
+//#include <px4_defines.h>
 
 /*
  *    Does matrix multiplication of two regular/square matrices

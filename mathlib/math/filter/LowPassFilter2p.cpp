@@ -37,10 +37,10 @@
 /// @brief	A class to implement a second order low pass filter
 /// Author: Leonard Hall <LeonardTHall@gmail.com>
 
-#include <px4_defines.h>
 #include "LowPassFilter2p.hpp"
 #include <cmath>
-
+#define PX4_ISFINITE(x) std::isfinite(x)
+#define M_PI_F 3.14159265f
 namespace math
 {
 

@@ -51,6 +51,4 @@
 
 
 
-
-
 #endif /* MC_CONST_H_ */

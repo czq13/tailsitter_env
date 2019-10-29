@@ -87,23 +87,23 @@ mc_att_ctrl::control_attitude(float dt)
 	//_thrust_sp = att_set.thrust;
 
 	/* prepare yaw weight from the ratio between roll/pitch and yaw gains */
-	Vector3f attitude_gain = _attitude_p;
+	matrix::Vector3f attitude_gain = _attitude_p;
 	const float roll_pitch_gain = (attitude_gain(0) + attitude_gain(1)) / 2.f;
 	const float yaw_w = math::constrain(attitude_gain(2) / roll_pitch_gain, 0.f, 1.f);
 	attitude_gain(2) = roll_pitch_gain;
 
 	/* get estimated and desired vehicle attitude */
-	Quatf q(_v_att.q);
-	Quatf qd(_v_att_sp.q_d);
+	matrix::Quatf q(_v_att.q);
+	matrix::Quatf qd(_v_att_sp.q_d);
 
 	/* ensure input quaternions are exactly normalized because acosf(1.00001) == NaN */
 	q.normalize();
 	qd.normalize();
 
 	/* calculate reduced desired attitude neglecting vehicle's yaw to prioritize roll and pitch */
-	Vector3f e_z = q.dcm_z();
-	Vector3f e_z_d = qd.dcm_z();
-	Quatf qd_red(e_z, e_z_d);
+	matrix::Vector3f e_z = q.dcm_z();
+	matrix::Vector3f e_z_d = qd.dcm_z();
+	matrix::Quatf qd_red(e_z, e_z_d);
 
 	if (abs(qd_red(1)) > (1.f - 1e-5f) || abs(qd_red(2)) > (1.f - 1e-5f)) {
 		/* In the infinitesimal corner case where the vehicle and thrust have the completely opposite direction,
@@ -117,19 +117,19 @@ mc_att_ctrl::control_attitude(float dt)
 	}
 
 	/* mix full and reduced desired attitude */
-	Quatf q_mix = qd_red.inversed() * qd;
+	matrix::Quatf q_mix = qd_red.inversed() * qd;
 	q_mix *= math::signNoZero(q_mix(0));
 	/* catch numerical problems with the domain of acosf and asinf */
 	q_mix(0) = math::constrain(q_mix(0), -1.f, 1.f);
 	q_mix(3) = math::constrain(q_mix(3), -1.f, 1.f);
-	qd = qd_red * Quatf(cosf(yaw_w * acosf(q_mix(0))), 0, 0, sinf(yaw_w * asinf(q_mix(3))));
+	qd = qd_red * matrix::Quatf(cosf(yaw_w * acosf(q_mix(0))), 0, 0, sinf(yaw_w * asinf(q_mix(3))));
 
 	/* quaternion attitude control law, qe is rotation from q to qd */
-	Quatf qe = q.inversed() * qd;
+	matrix::Quatf qe = q.inversed() * qd;
 
 	/* using sin(alpha/2) scaled rotation axis as attitude error (see quaternion definition by axis angle)
 	 * also taking care of the antipodal unit quaternion ambiguity */
-	Vector3f eq = 2.f * math::signNoZero(qe(0)) * qe.imag();
+	matrix::Vector3f eq = 2.f * math::signNoZero(qe(0)) * qe.imag();
 
 	/* calculate angular rates setpoint */
 	_rates_sp = eq.emult(attitude_gain);
@@ -142,8 +142,8 @@ mc_att_ctrl::control_attitude(float dt)
 	 * This yields a vector representing the commanded rotatation around the world z-axis expressed in the body frame
 	 * such that it can be added to the rates setpoint.
 	 */
-	Vector3f yaw_feedforward_rate = q.inversed().dcm_z();
-	yaw_feedforward_rate *= _v_att_sp.yaw_sp_move_rate * _yaw_ff.get();
+	matrix::Vector3f yaw_feedforward_rate = q.inversed().dcm_z();
+	yaw_feedforward_rate *= _v_att_sp.yaw_sp_move_rate * MC_YAW_FF;
 	_rates_sp += yaw_feedforward_rate;
 
 
@@ -151,6 +151,7 @@ mc_att_ctrl::control_attitude(float dt)
 	for (int i = 0; i < 3; i++) {
 		_rates_sp(i) = math::constrain(_rates_sp(i), -_auto_rate_max(i), _auto_rate_max(i));
 	}
+	printf("_rates(1)=%f,(2)=%f,(3)=%f\n",_rates_sp(0),_rates_sp(1),_rates_sp(2));
 }
 
 /*
@@ -159,14 +160,14 @@ mc_att_ctrl::control_attitude(float dt)
  * Input: 'tpa_breakpoint', 'tpa_rate', '_thrust_sp'
  * Output: 'pidAttenuationPerAxis' vector
  */
-Vector3f
+matrix::Vector3f
 mc_att_ctrl::pid_attenuations(float tpa_breakpoint, float tpa_rate)
 {
 	/* throttle pid attenuation factor */
-	float tpa = 1.0f - tpa_rate * (fabsf(_v_rates_sp.thrust) - tpa_breakpoint) / (1.0f - tpa_breakpoint);
+	float tpa = 1.0f - tpa_rate * (fabsf(thrust_sp) - tpa_breakpoint) / (1.0f - tpa_breakpoint);
 	tpa = fmaxf(TPA_RATE_LOWER_LIMIT, fminf(1.0f, tpa));
 
-	Vector3f pidAttenuationPerAxis;
+	matrix::Vector3f pidAttenuationPerAxis;
 	pidAttenuationPerAxis(0) = tpa;
 	pidAttenuationPerAxis(1) = tpa;
 	pidAttenuationPerAxis(2) = 1.0;
@@ -183,24 +184,26 @@ void
 mc_att_ctrl::control_attitude_rates(float dt)
 {
 	// get the raw gyro data and correct for thermal errors
-	Vector3f rates;
+	matrix::Vector3f rates;
 
 	rates(0) = _v_att.rollspeed;
 	rates(1) = _v_att.pitchspeed;
 	rates(2) = _v_att.yawspeed;
 
-	Vector3f rates_p_scaled = _rate_p.emult(pid_attenuations(MC_TPA_BREAK_P, MC_TPA_RATE_P));
-	Vector3f rates_i_scaled = _rate_i.emult(pid_attenuations(MC_TPA_BREAK_I, MC_TPA_RATE_I));
-	Vector3f rates_d_scaled = _rate_d.emult(pid_attenuations(MC_TPA_BREAK_D, MC_TPA_RATE_I));
+	matrix::Vector3f rates_p_scaled = _rate_p.emult(pid_attenuations(MC_TPA_BREAK_P, MC_TPA_RATE_P));
+	matrix::Vector3f rates_i_scaled = _rate_i.emult(pid_attenuations(MC_TPA_BREAK_I, MC_TPA_RATE_I));
+	matrix::Vector3f rates_d_scaled = _rate_d.emult(pid_attenuations(MC_TPA_BREAK_D, MC_TPA_RATE_I));
 
 	/* angular rates error */
-	Vector3f rates_err = _rates_sp - rates;
+	matrix::Vector3f rates_err = _rates_sp - rates;
+	printf("rates_err[0]=%f,[1]=%f,[2]=%f\n",rates_err(0),rates_err(1),rates_err(2));
 
 	/* apply low-pass filtering to the rates for D-term */
-	Vector3f rates_filtered(
+	matrix::Vector3f rates_filtered(
 		_lp_filters_d[0].apply(rates(0)),
 		_lp_filters_d[1].apply(rates(1)),
 		_lp_filters_d[2].apply(rates(2)));
+	printf("rates_filtered[0]=%f,[1]=%f,[2]=%f,dt=%f\n",rates_filtered(0),rates_filtered(1),rates_filtered(2),dt);
 
 	_att_control = rates_p_scaled.emult(rates_err) +
 		       _rates_int -
@@ -211,7 +214,7 @@ mc_att_ctrl::control_attitude_rates(float dt)
 	_rates_prev_filtered = rates_filtered;
 
 	/* update integral only if motors are providing enough thrust to be effective */
-	if (_thrust_sp > MIN_TAKEOFF_THRUST) {
+	if (thrust_sp > MIN_TAKEOFF_THRUST) {
 		for (int i = AXIS_INDEX_ROLL; i < AXIS_COUNT; i++) {
 
 			// Perform the integration using a first order method and do not propagate the result if out of range or invalid

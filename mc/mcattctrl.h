@@ -11,6 +11,8 @@
 #include "Chconst.h"
 #include <matrix/math.hpp>
 #include <math/filter/LowPassFilter2p.hpp>
+#include <math/Limits.hpp>
+#include <math/Functions.hpp>
 namespace MC {
 
 class mc_att_ctrl {
@@ -40,7 +42,7 @@ public:
 	math::LowPassFilter2p _lp_filters_d[3];
 	static constexpr const float initial_update_rate_hz = 250.f; /**< loop update rate used for initialization */
 	float _loop_update_rate_hz{initial_update_rate_hz};          /**< current rate-controller loop update rate in [Hz] */
-	float _d_term_cutoff_freq;
+	float _d_term_cutoff_freq,thrust_sp;
 	matrix::Vector3f _rates_prev;			/**< angular rates on previous step */
 	matrix::Vector3f _rates_prev_filtered;		/**< angular rates on previous step (low-pass filtered) */
 	matrix::Vector3f _rates_sp;			/**< angular rates setpoint */

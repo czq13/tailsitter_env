@@ -16,6 +16,7 @@ include_directories(./mc)
 include_directories(./mathlib)
 include_directories(./matrix)
 include_directories(/home/czq/chWorkspace/build_env/lib/ecl)
+#include_directories(/home/czq/firmware/src)
 include_directories(/home/czq/firmware/src/platforms)
 
 file(GLOB FW_SRC "./fw/*.cpp")
