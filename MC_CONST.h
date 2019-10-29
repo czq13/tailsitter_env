@@ -8,14 +8,14 @@
 #ifndef MC_CONST_H_
 #define MC_CONST_H_
 
-#define MC_ROLL_P 6.5f
-#define MC_ROLLRATE_P 0.15f
+#define MC_ROLL_P 6.0f
+#define MC_ROLLRATE_P 0.2f
 #define MC_ROLLRATE_I 0.05f
 #define MC_RR_INT_LIM 0.30f
 #define MC_ROLLRATE_D 0.003f
 #define MC_ROLLRATE_FF 0.0f
-#define MC_PITCH_P 6.5f
-#define MC_PITCHRATE_P 0.15f
+#define MC_PITCH_P 6.0f
+#define MC_PITCHRATE_P 0.2f
 #define MC_PITCHRATE_I 0.05f
 #define MC_PR_INT_LIM 0.30f
 #define MC_PITCHRATE_D 0.003f

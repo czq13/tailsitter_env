@@ -108,10 +108,10 @@ void tailsitter::update_info() {
 	yaw = ang.Yaw();
 }
 void tailsitter::apply_ctrl() {
-	this->rotor0->SetVelocity(0,rotor[0] * 120);
-	this->rotor1->SetVelocity(0,rotor[1] * 120);
-	this->rotor2->SetVelocity(0,rotor[2] * 120);
-	this->rotor3->SetVelocity(0,rotor[3] * 120);
+	this->rotor0->SetVelocity(0,math::constrain(rotor[0] * 120,0.0,1200.0));
+	this->rotor1->SetVelocity(0,math::constrain(rotor[1] * 120,0.0,1200.0));
+	this->rotor2->SetVelocity(0,math::constrain(rotor[2] * 120,0.0,1200.0));
+	this->rotor3->SetVelocity(0,math::constrain(rotor[3] * 120,0.0,1200.0));
 	this->left_elevon->SetPosition(0,left_ele);
 	this->right_elevon->SetPosition(0,right_ele);
 }
