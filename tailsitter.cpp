@@ -10,8 +10,8 @@
 
 tailsitter::tailsitter() {
 	// TODO Auto-generated constructor stub
-	//std::string file_name = "/home/czq/chWorkspace/tailsitter_env/gazebo_model/tailsitter.world";
-	std::string file_name = "/home/czq/eclipse-workspace/tailsitter_env/fw/gazebo_model/tailsitter.world";
+	std::string file_name = "/home/czq/chWorkspace/tailsitter_env/fw/gazebo_model/tailsitter.world";
+	//std::string file_name = "/home/czq/eclipse-workspace/tailsitter_env/fw/gazebo_model/tailsitter.world";
 	std::string model_name = "tailsitter";
 	try {
 		std::cerr << "loading world..." << std::endl;
@@ -80,14 +80,14 @@ void tailsitter::update_info() {
 
 	ignition::math::Quaterniond ang = pose.Rot();
 	ignition::math::Vector3d pos = pose.Pos();
-	_v_att.rollspeed = angaccel[0];
-	_v_att.pitchspeed = angaccel[1];
-	_v_att.yawspeed = angaccel[2];
+	_v_att.rollspeed = angvel[0];
+	_v_att.pitchspeed = angvel[1];
+	_v_att.yawspeed = angvel[2];
 	_v_att.q[0] = ang.W();
 	_v_att.q[1] = ang.X();
 	_v_att.q[2] = ang.Y();
 	_v_att.q[3] = ang.Z();
-	printf("q[0]=%f,[1]=%f,[2]=%f,[3]=%f\n",_v_att.q[0],_v_att.q[1],_v_att.q[2],_v_att.q[3]);
+	//printf("q[0]=%f,[1]=%f,[2]=%f,[3]=%f\n",_v_att.q[0],_v_att.q[1],_v_att.q[2],_v_att.q[3]);
 	_v_att.pre_timestamp = _v_att.timestamp;
 	_v_att.timestamp = (this->world->SimTime()).Double();
 
@@ -108,18 +108,19 @@ void tailsitter::update_info() {
 	yaw = ang.Yaw();
 }
 void tailsitter::apply_ctrl() {
-	this->rotor0->SetVelocity(0,math::constrain(rotor[0] * 120,0.0,1200.0));
-	this->rotor1->SetVelocity(0,math::constrain(rotor[1] * 120,0.0,1200.0));
-	this->rotor2->SetVelocity(0,math::constrain(rotor[2] * 120,0.0,1200.0));
-	this->rotor3->SetVelocity(0,math::constrain(rotor[3] * 120,0.0,1200.0));
+	this->rotor0->SetVelocity(0,math::constrain(rotor[0] * 120,0.0,120.0));
+	this->rotor1->SetVelocity(0,math::constrain(rotor[1] * 120,0.0,120.0));
+	this->rotor2->SetVelocity(0,math::constrain(rotor[2] * 120,0.0,120.0));
+	this->rotor3->SetVelocity(0,math::constrain(rotor[3] * 120,0.0,120.0));
 	this->left_elevon->SetPosition(0,left_ele);
 	this->right_elevon->SetPosition(0,right_ele);
 }
 void tailsitter::fill_actuator_outputs(){
-	rotor[0] = 0.753 + mc_att_control._data[0][0] + mc_att_control._data[1][0];
-	rotor[1] = 0.753 - mc_att_control._data[0][0] - mc_att_control._data[1][0];
-	rotor[2] = 0.753 + mc_att_control._data[0][0] - mc_att_control._data[1][0];
-	rotor[3] = 0.753 - mc_att_control._data[0][0] + mc_att_control._data[1][0];
+	rotor[0] = 0.753 - mc_att_control(0) - mc_att_control(1);
+	rotor[1] = 0.753 - mc_att_control(0) + mc_att_control(1);
+	rotor[2] = 0.753 + mc_att_control(0) - mc_att_control(1);
+	rotor[3] = 0.753 + mc_att_control(0) + mc_att_control(1);
+	printf("rotor(0)=%f,(1)=%f,(2)=%f,(3)=%f\n",rotor[0],rotor[1],rotor[2],rotor[3]);
 	left_ele = 0;//mc_att_control._data[2][0];
 	right_ele = 0;//-mc_att_control._data[2][0];
 }
@@ -129,6 +130,7 @@ void tailsitter::log() {
 		fprintf(logfile,"%f %f %f ",_local_pos.x,_local_pos.y,_local_pos.z);
 		fprintf(logfile,"%f %f %f ",_local_pos.vx,_local_pos.vy,_local_pos.vz);
 		fprintf(logfile,"%lf %lf %lf ",roll,pitch,yaw);
+		fprintf(logfile,"%f %f %f ",mc_ctrl->_att_control(0),mc_ctrl->_att_control(1),mc_ctrl->_att_control(2));
 		fprintf(logfile,"\n");
 	}
 }

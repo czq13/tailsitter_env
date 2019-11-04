@@ -4,23 +4,23 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/czq/eclipse-workspace/tailsitter_env/fw/ecl_controller.cpp" "/home/czq/eclipse-workspace/tailsitter_env/build/CMakeFiles/tailsitter_env.dir/fw/ecl_controller.cpp.o"
-  "/home/czq/eclipse-workspace/tailsitter_env/fw/ecl_pitch_controller.cpp" "/home/czq/eclipse-workspace/tailsitter_env/build/CMakeFiles/tailsitter_env.dir/fw/ecl_pitch_controller.cpp.o"
-  "/home/czq/eclipse-workspace/tailsitter_env/fw/ecl_roll_controller.cpp" "/home/czq/eclipse-workspace/tailsitter_env/build/CMakeFiles/tailsitter_env.dir/fw/ecl_roll_controller.cpp.o"
-  "/home/czq/eclipse-workspace/tailsitter_env/fw/ecl_wheel_controller.cpp" "/home/czq/eclipse-workspace/tailsitter_env/build/CMakeFiles/tailsitter_env.dir/fw/ecl_wheel_controller.cpp.o"
-  "/home/czq/eclipse-workspace/tailsitter_env/fw/ecl_yaw_controller.cpp" "/home/czq/eclipse-workspace/tailsitter_env/build/CMakeFiles/tailsitter_env.dir/fw/ecl_yaw_controller.cpp.o"
-  "/home/czq/eclipse-workspace/tailsitter_env/mathlib/math/filter/LowPassFilter2p.cpp" "/home/czq/eclipse-workspace/tailsitter_env/build/CMakeFiles/tailsitter_env.dir/mathlib/math/filter/LowPassFilter2p.cpp.o"
-  "/home/czq/eclipse-workspace/tailsitter_env/mathlib/math/matrix_alg.cpp" "/home/czq/eclipse-workspace/tailsitter_env/build/CMakeFiles/tailsitter_env.dir/mathlib/math/matrix_alg.cpp.o"
-  "/home/czq/eclipse-workspace/tailsitter_env/mc/mcattctrl.cpp" "/home/czq/eclipse-workspace/tailsitter_env/build/CMakeFiles/tailsitter_env.dir/mc/mcattctrl.cpp.o"
-  "/home/czq/eclipse-workspace/tailsitter_env/tailsitter.cpp" "/home/czq/eclipse-workspace/tailsitter_env/build/CMakeFiles/tailsitter_env.dir/tailsitter.cpp.o"
-  "/home/czq/eclipse-workspace/tailsitter_env/tailsitter_env.cpp" "/home/czq/eclipse-workspace/tailsitter_env/build/CMakeFiles/tailsitter_env.dir/tailsitter_env.cpp.o"
+  "/home/czq/chWorkspace/tailsitter_env/fw/ecl_controller.cpp" "/home/czq/chWorkspace/tailsitter_env/build/CMakeFiles/tailsitter_env.dir/fw/ecl_controller.cpp.o"
+  "/home/czq/chWorkspace/tailsitter_env/fw/ecl_pitch_controller.cpp" "/home/czq/chWorkspace/tailsitter_env/build/CMakeFiles/tailsitter_env.dir/fw/ecl_pitch_controller.cpp.o"
+  "/home/czq/chWorkspace/tailsitter_env/fw/ecl_roll_controller.cpp" "/home/czq/chWorkspace/tailsitter_env/build/CMakeFiles/tailsitter_env.dir/fw/ecl_roll_controller.cpp.o"
+  "/home/czq/chWorkspace/tailsitter_env/fw/ecl_wheel_controller.cpp" "/home/czq/chWorkspace/tailsitter_env/build/CMakeFiles/tailsitter_env.dir/fw/ecl_wheel_controller.cpp.o"
+  "/home/czq/chWorkspace/tailsitter_env/fw/ecl_yaw_controller.cpp" "/home/czq/chWorkspace/tailsitter_env/build/CMakeFiles/tailsitter_env.dir/fw/ecl_yaw_controller.cpp.o"
+  "/home/czq/chWorkspace/tailsitter_env/mathlib/math/filter/LowPassFilter2p.cpp" "/home/czq/chWorkspace/tailsitter_env/build/CMakeFiles/tailsitter_env.dir/mathlib/math/filter/LowPassFilter2p.cpp.o"
+  "/home/czq/chWorkspace/tailsitter_env/mathlib/math/matrix_alg.cpp" "/home/czq/chWorkspace/tailsitter_env/build/CMakeFiles/tailsitter_env.dir/mathlib/math/matrix_alg.cpp.o"
+  "/home/czq/chWorkspace/tailsitter_env/mc/mcattctrl.cpp" "/home/czq/chWorkspace/tailsitter_env/build/CMakeFiles/tailsitter_env.dir/mc/mcattctrl.cpp.o"
+  "/home/czq/chWorkspace/tailsitter_env/tailsitter.cpp" "/home/czq/chWorkspace/tailsitter_env/build/CMakeFiles/tailsitter_env.dir/tailsitter.cpp.o"
+  "/home/czq/chWorkspace/tailsitter_env/tailsitter_env.cpp" "/home/czq/chWorkspace/tailsitter_env/build/CMakeFiles/tailsitter_env.dir/tailsitter_env.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # Preprocessor definitions for this target.
 set(CMAKE_TARGET_DEFINITIONS_CXX
   "ECL_STANDALONE=1"
-  "LIBBULLET_VERSION=2.83"
+  "LIBBULLET_VERSION=2.87"
   "LIBBULLET_VERSION_GT_282"
   )
 
@@ -29,7 +29,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/usr/include/gazebo-9"
   "/usr/include/bullet"
   "/usr/include/simbody"
-  "/usr/include/sdformat-6.2"
+  "/usr/include/sdformat-6.0"
   "/usr/include/ignition/math4"
   "/usr/include/OGRE"
   "/usr/include/OGRE/Terrain"
