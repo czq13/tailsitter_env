@@ -61,8 +61,8 @@ void tailsitter::run_world() {
 	update_info();
 	mc_ctrl->_v_att = _v_att;
 	mc_ctrl->_v_att_sp.q_d[0] = 1.0f;mc_ctrl->_v_att_sp.q_d[1] = 0.0f;mc_ctrl->_v_att_sp.q_d[2] = 0.0f;mc_ctrl->_v_att_sp.q_d[3] = 0.0f;
-	mc_ctrl->thrust_sp = 0.73;
 	double dt = math::max(_v_att.timestamp-_v_att.pre_timestamp,1.0e-6);
+	ctrl_h();
 	mc_ctrl->control_attitude(dt);
 	mc_ctrl->control_attitude_rates(dt);
 	mc_att_control = mc_ctrl->_att_control;
@@ -90,7 +90,7 @@ void tailsitter::update_info() {
 	//printf("q[0]=%f,[1]=%f,[2]=%f,[3]=%f\n",_v_att.q[0],_v_att.q[1],_v_att.q[2],_v_att.q[3]);
 	_v_att.pre_timestamp = _v_att.timestamp;
 	_v_att.timestamp = (this->world->SimTime()).Double();
-
+	printf("angaccel(0)=%f,(1)=%f,(2)=%f\n",angaccel[0],angaccel[1],angaccel[2]);
 
 	_local_pos.ax = linearaccel[0];
 	_local_pos.ay = linearaccel[1];
@@ -107,6 +107,10 @@ void tailsitter::update_info() {
 	pitch = ang.Pitch();
 	yaw = ang.Yaw();
 }
+void tailsitter::ctrl_h() {
+	mc_ctrl->thrust_sp = 0.75 + 0.5 * (0-_local_pos.vz);
+	printf("thrust_sp=%f",mc_ctrl->thrust_sp);
+}
 void tailsitter::apply_ctrl() {
 	this->rotor0->SetVelocity(0,math::constrain(rotor[0] * 120,0.0,120.0));
 	this->rotor1->SetVelocity(0,math::constrain(rotor[1] * 120,0.0,120.0));
@@ -116,19 +120,18 @@ void tailsitter::apply_ctrl() {
 	this->right_elevon->SetPosition(0,right_ele);
 }
 void tailsitter::fill_actuator_outputs(){
-	rotor[0] = 0.753 - mc_att_control(0) - mc_att_control(1);
-	rotor[1] = 0.753 - mc_att_control(0) + mc_att_control(1);
-	rotor[2] = 0.753 + mc_att_control(0) - mc_att_control(1);
-	rotor[3] = 0.753 + mc_att_control(0) + mc_att_control(1);
-	printf("rotor(0)=%f,(1)=%f,(2)=%f,(3)=%f\n",rotor[0],rotor[1],rotor[2],rotor[3]);
-	left_ele = 0;//mc_att_control._data[2][0];
-	right_ele = 0;//-mc_att_control._data[2][0];
+	rotor[0] = mc_ctrl->thrust_sp - mc_att_control(0) - mc_att_control(1);
+	rotor[1] = mc_ctrl->thrust_sp + mc_att_control(0) + mc_att_control(1);
+	rotor[2] = mc_ctrl->thrust_sp + mc_att_control(0) - mc_att_control(1);
+	rotor[3] = mc_ctrl->thrust_sp - mc_att_control(0) + mc_att_control(1);
+	//printf("rotor0=%f,1=%f,2=%f,3=%f\n",rotor[0],rotor[1],rotor[2],rotor[3]);
+	left_ele = 0;//-mc_att_control(2);
+	right_ele = 0;//mc_att_control(2);
 }
 void tailsitter::log() {
 	if (!logfile) printf("log fail!\n");
 	else {
-		fprintf(logfile,"%f %f %f ",_local_pos.x,_local_pos.y,_local_pos.z);
-		fprintf(logfile,"%f %f %f ",_local_pos.vx,_local_pos.vy,_local_pos.vz);
+		fprintf(logfile,"%lf %lf %lf ",_local_pos.vx,_local_pos.vy,_local_pos.vz);
 		fprintf(logfile,"%lf %lf %lf ",roll,pitch,yaw);
 		fprintf(logfile,"%f %f %f ",mc_ctrl->_att_control(0),mc_ctrl->_att_control(1),mc_ctrl->_att_control(2));
 		fprintf(logfile,"\n");

@@ -148,7 +148,7 @@ mc_att_ctrl::control_attitude(float dt)
 	yaw_feedforward_rate *= 0.0f * MC_YAW_FF;
 	_rates_sp += yaw_feedforward_rate;
 	//printf("in mc_att_ctrl:yaw_feedforward_rate(1)=%f,(2)=%f,(3)=%f\n",yaw_feedforward_rate(0),yaw_feedforward_rate(1),yaw_feedforward_rate(2));
-	printf("in mc_att_ctrl:_rates_sp(1)=%f,(2)=%f,(3)=%f\n",_rates_sp(0),_rates_sp(1),_rates_sp(2));
+	//printf("in mc_att_ctrl:_rates_sp(1)=%f,(2)=%f,(3)=%f\n",_rates_sp(0),_rates_sp(1),_rates_sp(2));
 	/* limit rates */
 	for (int i = 0; i < 3; i++) {
 		_rates_sp(i) = math::constrain(_rates_sp(i), -_auto_rate_max(i), _auto_rate_max(i));
@@ -197,9 +197,9 @@ mc_att_ctrl::control_attitude_rates(float dt)
 	matrix::Vector3f rates_d_scaled = _rate_d.emult(pid_attenuations(MC_TPA_BREAK_D, MC_TPA_RATE_I));
 
 	/* angular rates error */
-	printf("rates(0)=%f,(1)=%f,(2)=%f\n",rates(0),rates(1),rates(2));
+	//printf("rates(0)=%f,(1)=%f,(2)=%f\n",rates(0),rates(1),rates(2));
 	matrix::Vector3f rates_err = _rates_sp - rates;
-	printf("rates_err[0]=%f,[1]=%f,[2]=%f\n",rates_err(0),rates_err(1),rates_err(2));
+	//printf("rates_err[0]=%f,[1]=%f,[2]=%f\n",rates_err(0),rates_err(1),rates_err(2));
 
 	/* apply low-pass filtering to the rates for D-term */
 	matrix::Vector3f rates_filtered(
@@ -207,20 +207,20 @@ mc_att_ctrl::control_attitude_rates(float dt)
 		_lp_filters_d[1].apply(rates(1)),
 		_lp_filters_d[2].apply(rates(2)));
 	//printf("rates_filtered[0]=%f,[1]=%f,[2]=%f,dt=%f\n",rates_filtered(0),rates_filtered(1),rates_filtered(2),dt);
-	printf("rates_p_scaled(0)=%f,(1)=%f,(2)=%f\n",rates_p_scaled(0),rates_p_scaled(1),rates_p_scaled(2));
+	//printf("rates_p_scaled(0)=%f,(1)=%f,(2)=%f\n",rates_p_scaled(0),rates_p_scaled(1),rates_p_scaled(2));
 	matrix::Vector3f v1 = rates_p_scaled.emult(rates_err);
 	matrix::Vector3f v2 = _rates_int;
 	matrix::Vector3f v3 =  rates_d_scaled.emult(rates_filtered - _rates_prev_filtered) / dt;
 	matrix::Vector3f v4 = _rate_ff.emult(_rates_sp);
-	printf("v1(0)=%f,(1)=%f,(2)=%f\n",v1(0),v1(1),v1(2));
-	printf("v2(0)=%f,(1)=%f,(2)=%f\n",v2(0),v2(1),v2(2));
-	printf("v3(0)=%f,(1)=%f,(2)=%f\n",v3(0),v3(1),v3(2));
-	printf("v4(0)=%f,(1)=%f,(2)=%f\n",v4(0),v4(1),v4(2));
+	//printf("v1(0)=%f,(1)=%f,(2)=%f\n",v1(0),v1(1),v1(2));
+	//printf("v2(0)=%f,(1)=%f,(2)=%f\n",v2(0),v2(1),v2(2));
+	//printf("v3(0)=%f,(1)=%f,(2)=%f\n",v3(0),v3(1),v3(2));
+	//printf("v4(0)=%f,(1)=%f,(2)=%f\n",v4(0),v4(1),v4(2));
 	_att_control = rates_p_scaled.emult(rates_err) +
 		       _rates_int -
 		       rates_d_scaled.emult(rates_filtered - _rates_prev_filtered) / dt +
 		       _rate_ff.emult(_rates_sp);
-	printf("_att_control(0)=%f,(1)=%f,(2)=%f\n",_att_control(0),_att_control(1),_att_control(2));
+	//printf("_att_control(0)=%f,(1)=%f,(2)=%f\n",_att_control(0),_att_control(1),_att_control(2));
 	_rates_prev = rates;
 	_rates_prev_filtered = rates_filtered;
 

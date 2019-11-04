@@ -42,6 +42,7 @@ public:
 	void apply_ctrl();
 	void fill_actuator_outputs();
 	void log();
+	void ctrl_h();
 };
 
 #endif /* TAILSITTER_H_ */
