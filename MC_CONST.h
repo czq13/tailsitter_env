@@ -49,6 +49,53 @@
 #define MC_DTERM_CUTOFF 30.f
 #define MC_AIRMODE 0
 
-
+#define FW_R_TC 0.4f
+#define FW_P_TC 0.4f
+#define FW_PR_P 0.08f
+#define FW_PR_I 0.02f
+#define FW_P_RMAX_POS 60.0f
+#define FW_P_RMAX_NEG 60.0f
+#define FW_PR_IMAX 0.4f
+#define FW_RR_P 0.05f
+#define FW_RR_I 0.01f
+#define FW_RR_IMAX 0.2f
+#define FW_R_RMAX 70.0f
+#define FW_YR_P 0.05f
+#define FW_YR_I 0.01f
+#define FW_YR_IMAX 0.2f
+#define FW_Y_RMAX 50.0f
+#define FW_RLL_TO_YAW_FF 0.0f
+#define FW_W_EN 0
+#define FW_WR_P 0.5f
+#define FW_WR_I 0.1f
+#define FW_WR_IMAX 1.0f
+#define FW_W_RMAX 30.0f
+#define FW_RR_FF 0.5f
+#define FW_PR_FF 0.5f
+#define FW_YR_FF 0.3f
+#define FW_WR_FF 0.2f
+#define FW_RSP_OFF 0.0f
+#define FW_PSP_OFF 0.0f
+#define FW_MAN_R_MAX 45.0f
+#define FW_MAN_P_MAX 45.0f
+#define FW_FLAPS_SCL 1.0f
+#define FW_FLAPERON_SCL 0.0f
+#define FW_ARSP_MODE 0
+#define FW_MAN_R_SC 1.0f
+#define FW_MAN_P_SC 1.0f
+#define FW_MAN_Y_SC 1.0f
+#define FW_BAT_SCALE_EN 0
+#define FW_ACRO_X_MAX 90
+#define FW_ACRO_Y_MAX 90
+#define FW_ACRO_Z_MAX 45
+#define FW_RATT_TH 0.8f
+#define FW_DTRIM_R_VMIN 0.0f
+#define FW_DTRIM_P_VMIN 0.0f
+#define FW_DTRIM_Y_VMIN 0.0f
+#define FW_DTRIM_R_VMAX 0.0f
+#define FW_DTRIM_P_VMAX 0.0f
+#define FW_DTRIM_Y_VMAX 0.0f
+#define FW_DTRIM_R_FLPS 0.0f
+#define FW_DTRIM_P_FLPS 0.0f
 
 #endif /* MC_CONST_H_ */

@@ -125,8 +125,8 @@ void tailsitter::fill_actuator_outputs(){
 	rotor[2] = mc_ctrl->thrust_sp + mc_att_control(0) - mc_att_control(1);
 	rotor[3] = mc_ctrl->thrust_sp - mc_att_control(0) + mc_att_control(1);
 	//printf("rotor0=%f,1=%f,2=%f,3=%f\n",rotor[0],rotor[1],rotor[2],rotor[3]);
-	left_ele = 0;//-mc_att_control(2);
-	right_ele = 0;//mc_att_control(2);
+	left_ele = -mc_att_control(2);
+	right_ele = mc_att_control(2);
 }
 void tailsitter::log() {
 	if (!logfile) printf("log fail!\n");

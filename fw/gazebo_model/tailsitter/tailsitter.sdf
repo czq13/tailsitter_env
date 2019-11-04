@@ -457,11 +457,11 @@
       </physics>
     </joint>
     
-    <!--plugin name="body_wing" filename="libTailSitterPlugin.so">
+    <plugin name="body_wing" filename="libTailSitterPlugin.so">
     	<forward>0 0 1</forward>
     	<upward>-1 0 0</upward>
     	<link_name>base_link</link_name>
-    </plugin-->
+    </plugin>
 
     <plugin name="rudder" filename="libLiftDragPlugin.so">
       <a0>0.0</a0>
