@@ -99,6 +99,8 @@ public:
 
 	void reset_integrator();
 
+	float dt;
+
 protected:
 	uint64_t _last_run;
 	float _tc;

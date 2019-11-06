@@ -42,7 +42,7 @@ tailsitter::tailsitter() {
 					std::cerr << "load joint failed!\n";
 		}
 		else std:: cerr << "load joint success\n";
-		this->step_size = 1;
+		this->step_size = 2;
 		logfile = fopen("log.txt","w");
 		mc_ctrl = new MC::mc_att_ctrl();
 		_v_att.pre_timestamp = _v_att.timestamp = 0;
@@ -85,8 +85,10 @@ void tailsitter::run_world() {
 	fw_ctrl_speed();
 	get_fx_ctrl();
 	fill_fw_actuator_outputs();
-	apply_ctrl();
-	gazebo::runWorld(this->world,this->step_size);
+	for (int i = 0;i < this->step_size;i++) {
+		apply_ctrl();
+		gazebo::runWorld(this->world,1);
+	}
 	log();
 }
 void tailsitter::update_info() {
@@ -183,7 +185,7 @@ void tailsitter::fill_fw_actuator_outputs() {
 	rotor[3] = fwthrust;
 	left_ele = fw_att_control(1)+fw_att_control(0);
 	right_ele = fw_att_control(1)-fw_att_control(0);
-	printf("left_ele=%lf,right_ele=%lf\n",left_ele,right_ele);
+	//printf("left_ele=%lf,right_ele=%lf\n",left_ele,right_ele);
 }
 void tailsitter::get_mc_ctrl() {
 	mc_ctrl->_v_att = _v_att;
@@ -201,7 +203,7 @@ void tailsitter::get_fx_ctrl() {
 	control_input.body_y_rate = _v_att.pitchspeed;
 	control_input.body_z_rate = _v_att.yawspeed;
 	control_input.roll_setpoint = 5.0/57.3;
-	control_input.pitch_setpoint = 10.0/57.3;
+	control_input.pitch_setpoint = 5.0/57.3;
 	control_input.yaw_setpoint = fwyaw;
 	control_input.airspeed_min = 14;
 	control_input.airspeed_max = 30;
@@ -210,6 +212,9 @@ void tailsitter::get_fx_ctrl() {
 	control_input.groundspeed = speed;
 	float airspeed_scaling = 16.0f / ((speed < 14.0f) ? 14.0f: speed);
 	control_input.scaler = airspeed_scaling;
+	_roll_ctrl.dt = _v_att.timestamp - _v_att.pre_timestamp;
+	_pitch_ctrl.dt = _v_att.timestamp - _v_att.pre_timestamp;
+	printf("dt=%lf\n",_roll_ctrl.dt);
 	_roll_ctrl.control_attitude(control_input);
 	_pitch_ctrl.control_attitude(control_input);
 	_yaw_ctrl.control_attitude(control_input); //runs last, because is depending on output of roll and pitch attitude
@@ -217,7 +222,7 @@ void tailsitter::get_fx_ctrl() {
 	/* Update input data for rate controllers */
 	control_input.roll_rate_setpoint = _roll_ctrl.get_desired_rate();
 	control_input.pitch_rate_setpoint = _pitch_ctrl.get_desired_rate();
-	printf("pitch_rate_sp=%f\n",control_input.pitch_rate_setpoint);
+	//printf("pitch_rate_sp=%f\n",control_input.pitch_rate_setpoint);
 	control_input.yaw_rate_setpoint = _yaw_ctrl.get_desired_rate();
 
 	/* Run attitude RATE controllers which need the desired attitudes from above, add trim */
@@ -229,7 +234,7 @@ void tailsitter::get_fx_ctrl() {
 	}
 
 	float pitch_u = _pitch_ctrl.control_euler_rate(control_input);
-	printf("pitch_u=%f\n",pitch_u);
+	//printf("pitch_u=%f\n",pitch_u);
 	fw_att_control(1) = (std::isfinite(pitch_u)) ? pitch_u + 0 : 0;
 
 	if (!std::isfinite(pitch_u)) {

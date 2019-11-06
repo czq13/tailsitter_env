@@ -80,7 +80,7 @@ float ECL_RollController::control_bodyrate(const struct ECL_ControlData &ctl_dat
 	/* get the usual dt estimate */
 	uint64_t dt_micros = ecl_elapsed_time(&_last_run);
 	_last_run = ecl_absolute_time();
-	float dt = (float)dt_micros * 1e-6f;
+	//float dt = (float)dt_micros * 1e-6f;
 
 	/* lock integral for long intervals */
 	bool lock_integrator = ctl_data.lock_integrator;
