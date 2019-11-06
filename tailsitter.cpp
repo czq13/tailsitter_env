@@ -73,7 +73,9 @@ tailsitter::tailsitter() {
 	_pitch_ctrl.set_max_rate_pos(math::radians(FW_P_RMAX_POS));
 	_pitch_ctrl.set_max_rate_neg(math::radians(FW_P_RMAX_NEG));
 	_yaw_ctrl.set_max_rate(math::radians(FW_Y_RMAX));
-
+	roll_weight = 1.0;
+	pitch_weight = 0.5;
+	yaw_weight = 1.0;
 }
 
 tailsitter::~tailsitter() {
@@ -82,9 +84,8 @@ tailsitter::~tailsitter() {
 void tailsitter::run_world() {
 	//run ctrl
 	update_info();
-	fw_ctrl_speed();
-	get_fx_ctrl();
-	fill_fw_actuator_outputs();
+	get_ts_ctrl();
+	fill_ts_actuator_outputs();
 	for (int i = 0;i < this->step_size;i++) {
 		apply_ctrl();
 		gazebo::runWorld(this->world,1);
@@ -127,6 +128,9 @@ void tailsitter::update_info() {
 	pitch = ang.Pitch();
 	yaw = ang.Yaw();
 
+	ignition::math::Vector3d vb = pose.Inverse().Rot().RotateVector(linearvel);
+	vxb = vb[0];vyb = vb[1];vzb = vb[2];
+
 	matrix::Dcmf R = matrix::Quatf(_v_att.q);
 	matrix::Dcmf R_adapted = R;		//modified rotation matrix
 
@@ -158,7 +162,7 @@ void tailsitter::mc_ctrl_h() {
 	printf("thrust_sp=%f",mc_ctrl->thrust_sp);
 }
 void tailsitter::fw_ctrl_speed() {
-	fwthrust = 0.5 + (22 - (speed));
+	thrust_sp = 0.5 + (22 - (speed));
 
 }
 void tailsitter::apply_ctrl() {
@@ -179,21 +183,42 @@ void tailsitter::fill_mc_actuator_outputs(){
 	right_ele = mc_att_control(2);
 }
 void tailsitter::fill_fw_actuator_outputs() {
-	rotor[0] = fwthrust;
-	rotor[1] = fwthrust;
-	rotor[2] = fwthrust;
-	rotor[3] = fwthrust;
+	rotor[0] = thrust_sp;
+	rotor[1] = thrust_sp;
+	rotor[2] = thrust_sp;
+	rotor[3] = thrust_sp;
 	left_ele = fw_att_control(1)+fw_att_control(0);
 	right_ele = fw_att_control(1)-fw_att_control(0);
 	//printf("left_ele=%lf,right_ele=%lf\n",left_ele,right_ele);
 }
+void tailsitter::fill_ts_actuator_outputs() {
+	rotor[0] = thrust_sp - ts_att_control(0) - ts_att_control(1);
+	rotor[1] = thrust_sp + ts_att_control(0) + ts_att_control(1);
+	rotor[2] = thrust_sp + ts_att_control(0) - ts_att_control(1);
+	rotor[3] = thrust_sp - ts_att_control(0) + ts_att_control(1);
+	left_ele = ts_pitch - ts_roll;
+	right_ele = ts_pitch + ts_roll;
+}
+void tailsitter::get_ts_ctrl() {
+	mc_ctrl->thrust_sp = thrust_sp;
+	get_mc_ctrl();
+	get_fx_ctrl();
+	ts_att_control(0) = mc_att_control(0) * roll_weight;
+	ts_att_control(1) = mc_att_control(1) * pitch_weight;
+	ts_att_control(2) = mc_att_control(2) * yaw_weight;
+
+	ts_roll = mc_att_control(2) * yaw_weight - fw_att_control(0) * (1 - roll_weight);
+	ts_pitch = mc_att_control(1) * pitch_weight + fw_att_control(1) * (1 - pitch_weight);
+}
 void tailsitter::get_mc_ctrl() {
 	mc_ctrl->_v_att = _v_att;
-	mc_ctrl->_v_att_sp.q_d[0] = 1.0f;mc_ctrl->_v_att_sp.q_d[1] = 0.0f;mc_ctrl->_v_att_sp.q_d[2] = 0.0f;mc_ctrl->_v_att_sp.q_d[3] = 0.0f;
+	//mc_ctrl->_v_att_sp.q_d[0] = 1.0f;mc_ctrl->_v_att_sp.q_d[1] = 0.0f;mc_ctrl->_v_att_sp.q_d[2] = 0.0f;mc_ctrl->_v_att_sp.q_d[3] = 0.0f;
+	mc_ctrl->_v_att_sp = this->_v_att_sp;
 	double dt = math::max(_v_att.timestamp-_v_att.pre_timestamp,1.0e-6);
 	mc_ctrl->control_attitude(dt);
 	mc_ctrl->control_attitude_rates(dt);
 	mc_att_control = mc_ctrl->_att_control;
+	//printf("mc_ctrl(0)=%f,(1)=%f,(2)=%f\n",mc_att_control(0),mc_att_control(1),mc_att_control(2));
 }
 void tailsitter::get_fx_ctrl() {
 	control_input.roll = fwroll;
@@ -202,19 +227,25 @@ void tailsitter::get_fx_ctrl() {
 	control_input.body_x_rate = _v_att.rollspeed;
 	control_input.body_y_rate = _v_att.pitchspeed;
 	control_input.body_z_rate = _v_att.yawspeed;
-	control_input.roll_setpoint = 5.0/57.3;
-	control_input.pitch_setpoint = 5.0/57.3;
-	control_input.yaw_setpoint = fwyaw;
+
+	matrix::Dcmf R_offset = matrix::Eulerf(0, M_PI_2_F, 0);
+	matrix::Dcmf R_sp= matrix::Quatf(_v_att_sp.q_d);
+	R_sp = R_sp * R_offset;
+	matrix::Eulerf fw_sp(R_sp);
+
+	control_input.roll_setpoint = fw_sp(0);
+	control_input.pitch_setpoint = fw_sp(1);
+	control_input.yaw_setpoint = 0;
 	control_input.airspeed_min = 14;
 	control_input.airspeed_max = 30;
 	control_input.airspeed = speed;
 	control_input.lock_integrator = false;
 	control_input.groundspeed = speed;
-	float airspeed_scaling = 16.0f / ((speed < 14.0f) ? 14.0f: speed);
+	float airspeed_scaling = 18.0f / ((speed < 14.0f) ? 14.0f: speed);
 	control_input.scaler = airspeed_scaling;
 	_roll_ctrl.dt = _v_att.timestamp - _v_att.pre_timestamp;
 	_pitch_ctrl.dt = _v_att.timestamp - _v_att.pre_timestamp;
-	printf("dt=%lf\n",_roll_ctrl.dt);
+
 	_roll_ctrl.control_attitude(control_input);
 	_pitch_ctrl.control_attitude(control_input);
 	_yaw_ctrl.control_attitude(control_input); //runs last, because is depending on output of roll and pitch attitude
@@ -259,10 +290,13 @@ void tailsitter::init_fw_state(){
 void tailsitter::log() {
 	if (!logfile) printf("log fail!\n");
 	else {
+		fprintf(logfile,"%lf ",_v_att.timestamp);
 		fprintf(logfile,"%lf %lf %lf ",_local_pos.vx,_local_pos.vy,_local_pos.vz);
 		//fprintf(logfile,"%lf %lf %lf ",roll,pitch,yaw);
 		fprintf(logfile,"%lf %lf %lf ",fwroll,fwpitch,fwyaw);
+		fprintf(logfile,"%lf %lf %lf ",roll,pitch,yaw);
 		fprintf(logfile,"%f %f %f ",mc_ctrl->_att_control(0),mc_ctrl->_att_control(1),mc_ctrl->_att_control(2));
+		fprintf(logfile,"%lf %lf ",ts_pitch,ts_roll);
 		fprintf(logfile,"\n");
 	}
 }

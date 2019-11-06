@@ -331,6 +331,8 @@ iostream
 -
 tailsitter.h
 /home/czq/chWorkspace/tailsitter_env/tailsitter.h
+Python.h
+-
 
 /home/czq/firmware/src/platforms/px4_defines.h
 px4_log.h
