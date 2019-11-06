@@ -133,7 +133,7 @@ float ECL_PitchController::control_euler_rate(const struct ECL_ControlData &ctl_
 	/* Transform setpoint to body angular rates (jacobian) */
 	_bodyrate_setpoint = cosf(ctl_data.roll) * _rate_setpoint +
 			     cosf(ctl_data.pitch) * sinf(ctl_data.roll) * ctl_data.yaw_rate_setpoint;
-
+	printf("_bodyrate_sp=%f\n",_bodyrate_setpoint);
 	set_bodyrate_setpoint(_bodyrate_setpoint);
 
 	return control_bodyrate(ctl_data);

@@ -129,9 +129,16 @@ CMakeFiles/tailsitter_env.dir/mc/mcattctrl.cpp.o: /usr/include/x86_64-linux-gnu/
 CMakeFiles/tailsitter_env.dir/mc/mcattctrl.cpp.o: /usr/include/x86_64-linux-gnu/bits/wordsize.h
 CMakeFiles/tailsitter_env.dir/mc/mcattctrl.cpp.o: /usr/include/x86_64-linux-gnu/sys/cdefs.h
 
+CMakeFiles/tailsitter_env.dir/tailsitter.cpp.o: .././fw/ecl.h
+CMakeFiles/tailsitter_env.dir/tailsitter.cpp.o: .././fw/ecl_controller.h
+CMakeFiles/tailsitter_env.dir/tailsitter.cpp.o: .././fw/ecl_pitch_controller.h
+CMakeFiles/tailsitter_env.dir/tailsitter.cpp.o: .././fw/ecl_roll_controller.h
+CMakeFiles/tailsitter_env.dir/tailsitter.cpp.o: .././fw/ecl_yaw_controller.h
 CMakeFiles/tailsitter_env.dir/tailsitter.cpp.o: .././mathlib/math/Functions.hpp
 CMakeFiles/tailsitter_env.dir/tailsitter.cpp.o: .././mathlib/math/Limits.hpp
 CMakeFiles/tailsitter_env.dir/tailsitter.cpp.o: .././mathlib/math/filter/LowPassFilter2p.hpp
+CMakeFiles/tailsitter_env.dir/tailsitter.cpp.o: .././mathlib/math/matrix_alg.h
+CMakeFiles/tailsitter_env.dir/tailsitter.cpp.o: .././mathlib/mathlib.h
 CMakeFiles/tailsitter_env.dir/tailsitter.cpp.o: .././matrix/matrix/AxisAngle.hpp
 CMakeFiles/tailsitter_env.dir/tailsitter.cpp.o: .././matrix/matrix/Dcm.hpp
 CMakeFiles/tailsitter_env.dir/tailsitter.cpp.o: .././matrix/matrix/Euler.hpp
@@ -689,9 +696,16 @@ CMakeFiles/tailsitter_env.dir/tailsitter.cpp.o: /usr/include/x86_64-linux-gnu/sy
 CMakeFiles/tailsitter_env.dir/tailsitter.cpp.o: /usr/include/x86_64-linux-gnu/sys/sysmacros.h
 CMakeFiles/tailsitter_env.dir/tailsitter.cpp.o: /usr/include/x86_64-linux-gnu/sys/types.h
 
+CMakeFiles/tailsitter_env.dir/tailsitter_env.cpp.o: .././fw/ecl.h
+CMakeFiles/tailsitter_env.dir/tailsitter_env.cpp.o: .././fw/ecl_controller.h
+CMakeFiles/tailsitter_env.dir/tailsitter_env.cpp.o: .././fw/ecl_pitch_controller.h
+CMakeFiles/tailsitter_env.dir/tailsitter_env.cpp.o: .././fw/ecl_roll_controller.h
+CMakeFiles/tailsitter_env.dir/tailsitter_env.cpp.o: .././fw/ecl_yaw_controller.h
 CMakeFiles/tailsitter_env.dir/tailsitter_env.cpp.o: .././mathlib/math/Functions.hpp
 CMakeFiles/tailsitter_env.dir/tailsitter_env.cpp.o: .././mathlib/math/Limits.hpp
 CMakeFiles/tailsitter_env.dir/tailsitter_env.cpp.o: .././mathlib/math/filter/LowPassFilter2p.hpp
+CMakeFiles/tailsitter_env.dir/tailsitter_env.cpp.o: .././mathlib/math/matrix_alg.h
+CMakeFiles/tailsitter_env.dir/tailsitter_env.cpp.o: .././mathlib/mathlib.h
 CMakeFiles/tailsitter_env.dir/tailsitter_env.cpp.o: .././matrix/matrix/AxisAngle.hpp
 CMakeFiles/tailsitter_env.dir/tailsitter_env.cpp.o: .././matrix/matrix/Dcm.hpp
 CMakeFiles/tailsitter_env.dir/tailsitter_env.cpp.o: .././matrix/matrix/Euler.hpp
