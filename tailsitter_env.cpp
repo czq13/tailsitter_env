@@ -4,6 +4,8 @@ using namespace std;
 
 #ifdef FORPY
 #include <Python.h>
+#include <vector>
+#include <string>
 tailsitter * ts;
 float yaw;
 static PyObject* test(PyObject *self, PyObject *args) {
@@ -34,6 +36,7 @@ static PyObject* SetCtrl(PyObject *self, PyObject *args) {
 	ts->_v_att_sp.yaw_body = yaw;
 	matrix::Quatf q_sp = matrix::Eulerf(ts->_v_att_sp.roll_body, ts->_v_att_sp.pitch_body, ts->_v_att_sp.yaw_body);
 	q_sp.copyTo(ts->_v_att_sp.q_d);
+	ts->run_world();
 	if (ok) return Py_BuildValue("i",1);
 	else return Py_BuildValue("i",0);
 }
@@ -43,7 +46,7 @@ static PyObject* GetObsv(PyObject *self, PyObject *args) {
 	vz = ts->vzb;
 	pitch = ts->pitch;
 	roll = ts->roll;
-	return Py_BuildValue("(ffff)",vx,vy,pitch,roll);
+	return Py_BuildValue("(ffff)",vx,vz,pitch,roll);
 }
 // Exported methods are collected in a table
 PyMethodDef method_table[] = {
@@ -69,7 +72,8 @@ PyModuleDef tailsitter_env_module = {
 
 // The module init function
 PyMODINIT_FUNC PyInit_tailsitter_env(void) {
-	gazebo::setupServer(argc,argv);
+	bool ok = true;
+	ok = gazebo::setupServer();
 	ts = new tailsitter();
     return PyModule_Create(&tailsitter_env_module);
 }

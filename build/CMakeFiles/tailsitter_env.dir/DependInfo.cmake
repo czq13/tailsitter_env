@@ -20,6 +20,7 @@ set(CMAKE_CXX_COMPILER_ID "GNU")
 # Preprocessor definitions for this target.
 set(CMAKE_TARGET_DEFINITIONS_CXX
   "ECL_STANDALONE=1"
+  "FORPY=1"
   "LIBBULLET_VERSION=2.87"
   "LIBBULLET_VERSION_GT_282"
   )
@@ -45,6 +46,9 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   ".././matrix"
   "/home/czq/chWorkspace/build_env/lib/ecl"
   "/home/czq/firmware/src/platforms"
+  "/usr/include/python3.6m"
+  "/usr/local/include/python3.6"
+  "/home/czq/.local/include/python3.6m"
   "/usr/include/uuid"
   "/usr/include/x86_64-linux-gnu"
   )

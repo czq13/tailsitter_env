@@ -9,8 +9,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/tailsitter_env.dir/mc/mcattctrl.cpp.o"
   "CMakeFiles/tailsitter_env.dir/mathlib/math/matrix_alg.cpp.o"
   "CMakeFiles/tailsitter_env.dir/mathlib/math/filter/LowPassFilter2p.cpp.o"
-  "tailsitter_env.pdb"
-  "tailsitter_env"
+  "libtailsitter_env.pdb"
+  "libtailsitter_env.so"
 )
 
 # Per-language clean rules from dependency scanning.
