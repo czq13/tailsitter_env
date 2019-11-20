@@ -244,5 +244,12 @@ mc_att_ctrl::control_attitude_rates(float dt)
 
 	}
 }
+void mc_att_ctrl::ctrl_reset() {
+	_rate_i(0) = _rate_i(1) = _rate_i(2) = 0;
+	_rates_int(0) = _rates_int(1) = _rates_int(2) = 0;
+	_lp_filters_d[0].reset(0);
+	_lp_filters_d[1].reset(0);
+	_lp_filters_d[2].reset(0);
+}
 
 } /* namespace MC */

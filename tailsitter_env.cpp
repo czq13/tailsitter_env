@@ -8,6 +8,7 @@ using namespace std;
 #include <string>
 tailsitter * ts;
 float yaw;
+int cnt;
 static PyObject* test(PyObject *self, PyObject *args) {
     cout << "hello ecl 1" << endl;
     return PyLong_FromLong(0);
@@ -23,15 +24,32 @@ static PyObject* ResetEnv(PyObject *self, PyObject *args) {
 	vel[1] = vy;
 	vel[2] = vz;
 	ts->model->SetLinearVel(vel);
+	ts->thrust_sp = 0.78;
+	ts->_v_att_sp.pitch_body = 0.0;
+	ts->reset_ctrl();
 	yaw = ts->yaw;
+
+	fclose(ts->logfile);
+	cnt++;
+	if (cnt > 10) cnt = cnt % 10;
+	string filename = "log";
+	//printf("cnt=%d\n",cnt);
+	//cout << char('0' + cnt % 10);
+	filename += char('0' + cnt % 10);
+	filename += char('0' + cnt / 10);
+	filename += ".txt";
+	fopen(filename.c_str(),"w");
 	if (ok) return Py_BuildValue("i",1);
 	else return Py_BuildValue("i",0);
 }
 static PyObject* SetCtrl(PyObject *self, PyObject *args) {
 	float thrust,pitch;
 	bool ok = PyArg_ParseTuple(args,"ff",&thrust,&pitch);
-	ts->thrust_sp = thrust;
-	ts->_v_att_sp.pitch_body = pitch;
+	//ts->thrust_sp = thrust;
+	//ts->_v_att_sp.pitch_body = pitch;
+	ts->thrust_sp = ts->thrust_sp * 0.95 + 0.05 * thrust;
+	if (ts->thrust_sp < 0.3) ts->thrust_sp = 0.3;
+	ts->_v_att_sp.pitch_body = ts->_v_att_sp.pitch_body * 0.95 + 0.05 * pitch;
 	ts->_v_att_sp.roll_body = 0.0;
 	ts->_v_att_sp.yaw_body = yaw;
 	matrix::Quatf q_sp = matrix::Eulerf(ts->_v_att_sp.roll_body, ts->_v_att_sp.pitch_body, ts->_v_att_sp.yaw_body);
@@ -41,12 +59,19 @@ static PyObject* SetCtrl(PyObject *self, PyObject *args) {
 	else return Py_BuildValue("i",0);
 }
 static PyObject* GetObsv(PyObject *self, PyObject *args) {
-	float vx,vz,pitch,roll;
-	vx = ts->vxb;
-	vz = ts->vzb;
+	float vx,vz,pitch,roll,pitchspeed,z;
+	vx = ts->_local_pos.vx;//ts->vxb;
+	vz = ts->_local_pos.vz;//ts->vzb;
 	pitch = ts->pitch;
 	roll = ts->roll;
-	return Py_BuildValue("(ffff)",vx,vz,pitch,roll);
+	pitchspeed = ts->_v_att.pitchspeed;
+	z = ts->_local_pos.z;
+	return Py_BuildValue("(ffffff)",vx,vz,pitch,roll,pitchspeed,z);
+}
+
+static PyObject* close(PyObject *self, PyObject *args) {
+	gazebo::shutdown();
+	return PyLong_FromLong(0);
 }
 // Exported methods are collected in a table
 PyMethodDef method_table[] = {
@@ -54,6 +79,7 @@ PyMethodDef method_table[] = {
 	{"ResetEnv", (PyCFunction) ResetEnv, METH_VARARGS, "reset env"},
 	{"SetCtrl", (PyCFunction) SetCtrl, METH_VARARGS, "set ctrl value"},
 	{"GetObsv", (PyCFunction) GetObsv, METH_VARARGS, "get observ"},
+	{"close", (PyCFunction) close, METH_VARARGS, "close the environment"},
     {NULL, NULL, 0, NULL} // Sentinel value ending the table
 };
 
@@ -97,6 +123,8 @@ int main(int argc, char **argv) {
 		ts->pitch_weight = 0.5;
 		ts->yaw_weight = 1.0;
 		ts->run_world();
+		ignition::math::Vector3d angaccel = ts->model2->WorldAngularAccel();
+		printf("%f %f %f\n",angaccel[0],angaccel[1],angaccel[2]);
 	}
 	//printf("ok");
 	return 0;

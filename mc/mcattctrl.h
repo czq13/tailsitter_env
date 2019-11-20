@@ -27,6 +27,7 @@ public:
 	void control_attitude(float dt);
 	matrix::Vector3f pid_attenuations(float tpa_breakpoint, float tpa_rate);
 	void control_attitude_rates(float dt);
+	void ctrl_reset();
 
 	matrix::Vector3f _attitude_p;		/**< P gain for attitude control */
 	matrix::Vector3f _rate_p;		/**< P gain for angular rate error */

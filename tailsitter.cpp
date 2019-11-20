@@ -7,20 +7,26 @@
 
 #include "tailsitter.h"
 
-
 tailsitter::tailsitter() {
 	// TODO Auto-generated constructor stub
-	std::string file_name = "/home/czq/chWorkspace/tailsitter_env/fw/gazebo_model/tailsitter.world";
+	std::string file_name =
+			"/home/czq/chWorkspace/tailsitter_env/fw/gazebo_model/tailsitter.world";
 	//std::string file_name = "/home/czq/eclipse-workspace/tailsitter_env/fw/gazebo_model/tailsitter.world";
 	std::string model_name = "tailsitter";
 	try {
 		std::cerr << "loading world..." << std::endl;
 		this->world = gazebo::loadWorld(file_name);
-		if (this->world == NULL) {std::cerr << "load world failed!" << std::endl;return;}
-		else std::cerr << "load world success\n";
+		if (this->world == NULL) {
+			std::cerr << "load world failed!" << std::endl;
+			return;
+		} else
+			std::cerr << "load world success\n";
 		this->model = this->world->ModelByName(model_name);
-		if (this->model == NULL) {std::cerr << "load model failed!\n";return;}
-		else std::cerr << "load model success\n";
+		if (this->model == NULL) {
+			std::cerr << "load model failed!\n";
+			return;
+		} else
+			std::cerr << "load model success\n";
 		std::string rotor0Name = "rotor_0_joint";
 		std::string rotor1Name = "rotor_1_joint";
 		std::string rotor2Name = "rotor_2_joint";
@@ -33,21 +39,18 @@ tailsitter::tailsitter() {
 		this->rotor3 = this->model->GetJoint(rotor3Name);
 		this->left_elevon = this->model->GetJoint(left_elevon_name);
 		this->right_elevon = this->model->GetJoint(right_elevon_name);
-		if (this->rotor0 == NULL ||
-				this->rotor1 == NULL ||
-				this->rotor2 == NULL ||
-				this->rotor3 == NULL ||
-				this->left_elevon == NULL ||
-				this->right_elevon == NULL) {
-					std::cerr << "load joint failed!\n";
-		}
-		else std:: cerr << "load joint success\n";
+		if (this->rotor0 == NULL || this->rotor1 == NULL || this->rotor2 == NULL
+				|| this->rotor3 == NULL || this->left_elevon == NULL
+				|| this->right_elevon == NULL) {
+			std::cerr << "load joint failed!\n";
+		} else
+			std::cerr << "load joint success\n";
 		this->step_size = 2;
-		logfile = fopen("log.txt","w");
+		logfile = fopen("log.txt", "w");
 		mc_ctrl = new MC::mc_att_ctrl();
 		_v_att.pre_timestamp = _v_att.timestamp = 0;
 		_local_pos.pre_timestamp = _local_pos.timestamp = 0;
-	} catch(gazebo::common::Exception &e) {
+	} catch (gazebo::common::Exception &e) {
 		std::cerr << "ERROR: " << e << std::endl;
 		return;
 	}
@@ -64,7 +67,7 @@ tailsitter::tailsitter() {
 	_roll_ctrl.set_k_ff(FW_RR_FF);
 	_roll_ctrl.set_integrator_max(FW_RR_IMAX);
 
-		/* yaw control parameters */
+	/* yaw control parameters */
 	_yaw_ctrl.set_k_p(FW_YR_P);
 	_yaw_ctrl.set_k_i(FW_YR_I);
 	_yaw_ctrl.set_k_ff(FW_YR_FF);
@@ -86,9 +89,9 @@ void tailsitter::run_world() {
 	update_info();
 	get_ts_ctrl();
 	fill_ts_actuator_outputs();
-	for (int i = 0;i < this->step_size;i++) {
+	for (int i = 0; i < this->step_size; i++) {
 		apply_ctrl();
-		gazebo::runWorld(this->world,1);
+		gazebo::runWorld(this->world, 1);
 	}
 	log();
 }
@@ -129,7 +132,9 @@ void tailsitter::update_info() {
 	yaw = ang.Yaw();
 
 	ignition::math::Vector3d vb = pose.Inverse().Rot().RotateVector(linearvel);
-	vxb = vb[0];vyb = vb[1];vzb = vb[2];
+	vxb = vb[0];
+	vyb = vb[1];
+	vzb = vb[2];
 
 	matrix::Dcmf R = matrix::Quatf(_v_att.q);
 	matrix::Dcmf R_adapted = R;		//modified rotation matrix
@@ -155,25 +160,27 @@ void tailsitter::update_info() {
 	fwroll = euler_angles.phi();
 	fwpitch = euler_angles.theta();
 	fwyaw = euler_angles.psi();
-	speed = sqrt(linearvel[0]*linearvel[0]+linearvel[1]*linearvel[1]+linearvel[2]*linearvel[2]);
+	speed = sqrt(
+			linearvel[0] * linearvel[0] + linearvel[1] * linearvel[1]
+					+ linearvel[2] * linearvel[2]);
 }
 void tailsitter::mc_ctrl_h() {
-	mc_ctrl->thrust_sp = 0.75 + 0.5 * (0-_local_pos.vz);
-	printf("thrust_sp=%f",mc_ctrl->thrust_sp);
+	mc_ctrl->thrust_sp = 0.75 + 0.5 * (0 - _local_pos.vz);
+	printf("thrust_sp=%f", mc_ctrl->thrust_sp);
 }
 void tailsitter::fw_ctrl_speed() {
 	thrust_sp = 0.5 + (22 - (speed));
 
 }
 void tailsitter::apply_ctrl() {
-	this->rotor0->SetVelocity(0,math::constrain(rotor[0] * 120,0.0,120.0));
-	this->rotor1->SetVelocity(0,math::constrain(rotor[1] * 120,0.0,120.0));
-	this->rotor2->SetVelocity(0,math::constrain(rotor[2] * 120,0.0,120.0));
-	this->rotor3->SetVelocity(0,math::constrain(rotor[3] * 120,0.0,120.0));
-	this->left_elevon->SetPosition(0,left_ele);
-	this->right_elevon->SetPosition(0,right_ele);
+	this->rotor0->SetVelocity(0, math::constrain(rotor[0] * 120, 0.0, 120.0));
+	this->rotor1->SetVelocity(0, math::constrain(rotor[1] * 120, 0.0, 120.0));
+	this->rotor2->SetVelocity(0, math::constrain(rotor[2] * 120, 0.0, 120.0));
+	this->rotor3->SetVelocity(0, math::constrain(rotor[3] * 120, 0.0, 120.0));
+	this->left_elevon->SetPosition(0, math::constrain(left_ele,-30.0/57.3,30.0/57.3));
+	this->right_elevon->SetPosition(0, math::constrain(right_ele,-30.0/57.3,30.0/57.3));
 }
-void tailsitter::fill_mc_actuator_outputs(){
+void tailsitter::fill_mc_actuator_outputs() {
 	rotor[0] = mc_ctrl->thrust_sp - mc_att_control(0) - mc_att_control(1);
 	rotor[1] = mc_ctrl->thrust_sp + mc_att_control(0) + mc_att_control(1);
 	rotor[2] = mc_ctrl->thrust_sp + mc_att_control(0) - mc_att_control(1);
@@ -187,8 +194,8 @@ void tailsitter::fill_fw_actuator_outputs() {
 	rotor[1] = thrust_sp;
 	rotor[2] = thrust_sp;
 	rotor[3] = thrust_sp;
-	left_ele = fw_att_control(1)+fw_att_control(0);
-	right_ele = fw_att_control(1)-fw_att_control(0);
+	left_ele = fw_att_control(1) + fw_att_control(0);
+	right_ele = fw_att_control(1) - fw_att_control(0);
 	//printf("left_ele=%lf,right_ele=%lf\n",left_ele,right_ele);
 }
 void tailsitter::fill_ts_actuator_outputs() {
@@ -207,14 +214,16 @@ void tailsitter::get_ts_ctrl() {
 	ts_att_control(1) = mc_att_control(1) * pitch_weight;
 	ts_att_control(2) = mc_att_control(2) * yaw_weight;
 
-	ts_roll = mc_att_control(2) * yaw_weight - fw_att_control(0) * (1 - roll_weight);
-	ts_pitch = mc_att_control(1) * pitch_weight + fw_att_control(1) * (1 - pitch_weight);
+	ts_roll = mc_att_control(2) * yaw_weight
+			- fw_att_control(0) * (1 - roll_weight);
+	ts_pitch = mc_att_control(1) * pitch_weight
+			+ fw_att_control(1) * (1 - pitch_weight);
 }
 void tailsitter::get_mc_ctrl() {
 	mc_ctrl->_v_att = _v_att;
 	//mc_ctrl->_v_att_sp.q_d[0] = 1.0f;mc_ctrl->_v_att_sp.q_d[1] = 0.0f;mc_ctrl->_v_att_sp.q_d[2] = 0.0f;mc_ctrl->_v_att_sp.q_d[3] = 0.0f;
 	mc_ctrl->_v_att_sp = this->_v_att_sp;
-	double dt = math::max(_v_att.timestamp-_v_att.pre_timestamp,1.0e-6);
+	double dt = math::max(_v_att.timestamp - _v_att.pre_timestamp, 1.0e-6);
 	mc_ctrl->control_attitude(dt);
 	mc_ctrl->control_attitude_rates(dt);
 	mc_att_control = mc_ctrl->_att_control;
@@ -229,7 +238,7 @@ void tailsitter::get_fx_ctrl() {
 	control_input.body_z_rate = _v_att.yawspeed;
 
 	matrix::Dcmf R_offset = matrix::Eulerf(0, M_PI_2_F, 0);
-	matrix::Dcmf R_sp= matrix::Quatf(_v_att_sp.q_d);
+	matrix::Dcmf R_sp = matrix::Quatf(_v_att_sp.q_d);
 	R_sp = R_sp * R_offset;
 	matrix::Eulerf fw_sp(R_sp);
 
@@ -241,7 +250,7 @@ void tailsitter::get_fx_ctrl() {
 	control_input.airspeed = speed;
 	control_input.lock_integrator = false;
 	control_input.groundspeed = speed;
-	float airspeed_scaling = 18.0f / ((speed < 14.0f) ? 14.0f: speed);
+	float airspeed_scaling = 18.0f / ((speed < 14.0f) ? 14.0f : speed);
 	control_input.scaler = airspeed_scaling;
 	_roll_ctrl.dt = _v_att.timestamp - _v_att.pre_timestamp;
 	_pitch_ctrl.dt = _v_att.timestamp - _v_att.pre_timestamp;
@@ -277,9 +286,9 @@ void tailsitter::get_fx_ctrl() {
 	yaw_u = _yaw_ctrl.control_euler_rate(control_input);
 	fw_att_control(2) = (std::isfinite(yaw_u)) ? yaw_u + 0 : 0;
 }
-void tailsitter::init_fw_state(){
+void tailsitter::init_fw_state() {
 	ignition::math::Pose3d pose;
-	pose.Set(0.0,0.0,0.0,0.0,-1.57,0.0);
+	pose.Set(0.0, 0.0, 0.0, 0.0, -1.57, 0.0);
 	this->model->SetWorldPose(pose);
 	ignition::math::Vector3d vel;
 	vel[0] = -15.0;
@@ -288,15 +297,28 @@ void tailsitter::init_fw_state(){
 	this->model->SetLinearVel(vel);
 }
 void tailsitter::log() {
-	if (!logfile) printf("log fail!\n");
+	if (!logfile)
+		printf("log fail!\n");
 	else {
-		fprintf(logfile,"%lf ",_v_att.timestamp);
-		fprintf(logfile,"%lf %lf %lf ",_local_pos.vx,_local_pos.vy,_local_pos.vz);
+		fprintf(logfile, "%lf ", _v_att.timestamp);
+		fprintf(logfile, "%lf %lf %lf ", _local_pos.vx, _local_pos.vy,
+				_local_pos.vz);
 		//fprintf(logfile,"%lf %lf %lf ",roll,pitch,yaw);
-		fprintf(logfile,"%lf %lf %lf ",fwroll,fwpitch,fwyaw);
-		fprintf(logfile,"%lf %lf %lf ",roll,pitch,yaw);
-		fprintf(logfile,"%f %f %f ",mc_ctrl->_att_control(0),mc_ctrl->_att_control(1),mc_ctrl->_att_control(2));
-		fprintf(logfile,"%lf %lf ",ts_pitch,ts_roll);
-		fprintf(logfile,"\n");
+		//fprintf(logfile,"%lf %lf %lf ",fwroll,fwpitch,fwyaw);
+		fprintf(logfile, "%lf %lf %lf ", roll, pitch, yaw);
+		fprintf(logfile, "%lf %lf %lf ", _v_att.rollspeed,_v_att.pitchspeed,_v_att.yawspeed);
+		fprintf(logfile, "%f %f %f ", mc_ctrl->_att_control(0),
+				mc_ctrl->_att_control(1), mc_ctrl->_att_control(2));
+		fprintf(logfile, "%lf %lf ", ts_pitch, ts_roll);
+		fprintf(logfile, "%lf %lf %lf %lf ", rotor[0], rotor[1], rotor[2],
+				rotor[3]);
+		fprintf(logfile, "%lf %lf ", thrust_sp, _v_att_sp.pitch_body * 57.3);
+		fprintf(logfile, "\n");
 	}
+}
+void tailsitter::reset_ctrl() {
+	_roll_ctrl.reset_integrator();
+	_pitch_ctrl.reset_integrator();
+	_yaw_ctrl.reset_integrator();
+	mc_ctrl->ctrl_reset();
 }

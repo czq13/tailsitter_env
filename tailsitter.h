@@ -63,6 +63,7 @@ public:
 	void log();
 	void mc_ctrl_h();
 	void fw_ctrl_speed();
+	void reset_ctrl();
 };
 
 #endif /* TAILSITTER_H_ */

@@ -38,5 +38,7 @@ else()
 	add_library(tailsitter_env SHARED ${SRC} ${FW_SRC} ${MC_SRC} ${OTHER_SRC})
 	target_link_libraries(tailsitter_env ${GAZEBO_LIBRARIES} pthread)
 	add_custom_command(TARGET tailsitter_env POST_BUILD
+						COMMAND cp libtailsitter_env.so /home/czq/baselines/baselines/TailsitterEnv/tailsitter_env.cpython-36m-x86_64-linux-gnu.so)
+	add_custom_command(TARGET tailsitter_env POST_BUILD
 						COMMAND cp libtailsitter_env.so tailsitter_env.cpython-36m-x86_64-linux-gnu.so)
 endif()
