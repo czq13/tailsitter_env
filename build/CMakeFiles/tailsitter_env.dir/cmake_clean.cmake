@@ -1,10 +1,10 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/tailsitter_env.dir/tailsitter.cpp.o"
   "CMakeFiles/tailsitter_env.dir/tailsitter_env.cpp.o"
-  "CMakeFiles/tailsitter_env.dir/fw/ecl_controller.cpp.o"
+  "CMakeFiles/tailsitter_env.dir/tailsitter.cpp.o"
   "CMakeFiles/tailsitter_env.dir/fw/ecl_pitch_controller.cpp.o"
-  "CMakeFiles/tailsitter_env.dir/fw/ecl_roll_controller.cpp.o"
+  "CMakeFiles/tailsitter_env.dir/fw/ecl_controller.cpp.o"
   "CMakeFiles/tailsitter_env.dir/fw/ecl_wheel_controller.cpp.o"
+  "CMakeFiles/tailsitter_env.dir/fw/ecl_roll_controller.cpp.o"
   "CMakeFiles/tailsitter_env.dir/fw/ecl_yaw_controller.cpp.o"
   "CMakeFiles/tailsitter_env.dir/mc/mcattctrl.cpp.o"
   "CMakeFiles/tailsitter_env.dir/mathlib/math/matrix_alg.cpp.o"

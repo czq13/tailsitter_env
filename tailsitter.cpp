@@ -10,7 +10,7 @@
 tailsitter::tailsitter() {
 	// TODO Auto-generated constructor stub
 	std::string file_name =
-			"/home/czq/chWorkspace/tailsitter_env/fw/gazebo_model/tailsitter.world";
+			"/home/czq/eclipse-workspace/tailsitter_env/fw/gazebo_model/tailsitter.world";
 	//std::string file_name = "/home/czq/eclipse-workspace/tailsitter_env/fw/gazebo_model/tailsitter.world";
 	std::string model_name = "tailsitter";
 	try {
@@ -46,7 +46,8 @@ tailsitter::tailsitter() {
 		} else
 			std::cerr << "load joint success\n";
 		this->step_size = 2;
-		logfile = fopen("log.txt", "w");
+		//logfile = fopen("log.txt", "w");
+		logfile = NULL;
 		mc_ctrl = new MC::mc_att_ctrl();
 		_v_att.pre_timestamp = _v_att.timestamp = 0;
 		_local_pos.pre_timestamp = _local_pos.timestamp = 0;

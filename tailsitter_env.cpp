@@ -15,7 +15,8 @@ static PyObject* test(PyObject *self, PyObject *args) {
 }
 static PyObject* ResetEnv(PyObject *self, PyObject *args) {
 	float vx,vy,vz,roll,pitch,yaw;
-	bool ok = PyArg_ParseTuple(args,"ffffff",&vx,&vy,&vz,&roll,&pitch,&yaw);
+	int num;
+	bool ok = PyArg_ParseTuple(args,"iffffff",&num,&vx,&vy,&vz,&roll,&pitch,&yaw);
 	ignition::math::Pose3d pose;
 	pose.Set(0.0,0.0,0.0,roll,pitch,yaw);
 	ts->model->SetWorldPose(pose);
@@ -29,7 +30,7 @@ static PyObject* ResetEnv(PyObject *self, PyObject *args) {
 	ts->reset_ctrl();
 	yaw = ts->yaw;
 
-	fclose(ts->logfile);
+	if (ts->logfile != NULL) fclose(ts->logfile);
 	cnt++;
 	if (cnt > 10) cnt = cnt % 10;
 	string filename = "log";
@@ -37,8 +38,10 @@ static PyObject* ResetEnv(PyObject *self, PyObject *args) {
 	//cout << char('0' + cnt % 10);
 	filename += char('0' + cnt % 10);
 	filename += char('0' + cnt / 10);
+	filename += char('0' + num / 10);
+	filename += char('0' + num % 10);
 	filename += ".txt";
-	fopen(filename.c_str(),"w");
+	ts->logfile = fopen(filename.c_str(),"w");
 	if (ok) return Py_BuildValue("i",1);
 	else return Py_BuildValue("i",0);
 }
@@ -73,6 +76,13 @@ static PyObject* close(PyObject *self, PyObject *args) {
 	gazebo::shutdown();
 	return PyLong_FromLong(0);
 }
+
+static PyObject* init(PyObject *self, PyObject *args) {
+	bool ok = true;
+	ok = gazebo::setupServer();
+	ts = new tailsitter();
+	return PyLong_FromLong(0);
+}
 // Exported methods are collected in a table
 PyMethodDef method_table[] = {
     {"test", (PyCFunction) test, METH_VARARGS, "Method docstring"},
@@ -80,6 +90,7 @@ PyMethodDef method_table[] = {
 	{"SetCtrl", (PyCFunction) SetCtrl, METH_VARARGS, "set ctrl value"},
 	{"GetObsv", (PyCFunction) GetObsv, METH_VARARGS, "get observ"},
 	{"close", (PyCFunction) close, METH_VARARGS, "close the environment"},
+	{"init", (PyCFunction) init, METH_VARARGS, "close the environment"},
     {NULL, NULL, 0, NULL} // Sentinel value ending the table
 };
 
@@ -98,9 +109,7 @@ PyModuleDef tailsitter_env_module = {
 
 // The module init function
 PyMODINIT_FUNC PyInit_tailsitter_env(void) {
-	bool ok = true;
-	ok = gazebo::setupServer();
-	ts = new tailsitter();
+
     return PyModule_Create(&tailsitter_env_module);
 }
 #else
